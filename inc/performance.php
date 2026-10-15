@@ -60,3 +60,50 @@ add_filter( 'wp_get_attachment_image_attributes', function ( $attr, $attachment,
 	}
 	return $attr;
 }, 10, 3 );
+
+/**
+ * Delay live-chat widgets (Tawk.to, Crisp, Tidio, LiveChat, Intercom) until the visitor
+ * first scrolls, taps, moves the mouse or presses a key. Chat still appears, but it no longer
+ * competes with the page's first paint. Toggle in Theme Options › Motion & speed.
+ */
+add_action( 'wp_footer', function () {
+	if ( is_admin() || ! jd_opt( 'delay_chat' ) ) {
+		return;
+	}
+	global $wp_filter;
+	if ( empty( $wp_filter['wp_footer'] ) ) {
+		return;
+	}
+	$needles   = apply_filters( 'jd_delayed_chat_callbacks', array( 'tawk', 'crisp', 'tidio', 'livechat', 'intercom' ) );
+	$callbacks = array();
+	foreach ( $wp_filter['wp_footer']->callbacks as $priority => $items ) {
+		foreach ( $items as $id => $item ) {
+			$fn   = $item['function'];
+			$name = is_array( $fn ) ? ( is_object( $fn[0] ) ? get_class( $fn[0] ) : (string) $fn[0] ) . '::' . $fn[1] : ( is_string( $fn ) ? $fn : '' );
+			foreach ( $needles as $needle ) {
+				if ( '' !== $name && false !== stripos( $name, $needle ) ) {
+					$callbacks[] = array( $priority, $fn, $item['accepted_args'] );
+					remove_action( 'wp_footer', $fn, $priority );
+					break;
+				}
+			}
+		}
+	}
+	if ( ! $callbacks ) {
+		return;
+	}
+	ob_start();
+	foreach ( $callbacks as $cb ) {
+		call_user_func( $cb[1] );
+	}
+	$html = (string) ob_get_clean();
+	// Neutralise the scripts; the loader below turns them back on after the first interaction.
+	$html = preg_replace( '#<script(?![^>]*type=["\']application/ld\+json)([^>]*)>#i', '<script type="text/plain" data-jd-delay$1>', $html );
+	$html = preg_replace( '#(<script type="text/plain" data-jd-delay[^>]*?)\stype=["\'][^"\']*["\']#i', '$1', $html );
+	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- output of the plugin's own embed callback.
+	?>
+	<script>
+	(function(){var done=false,ev=['scroll','pointerdown','pointermove','keydown','touchstart'];function run(){if(done)return;done=true;ev.forEach(function(e){removeEventListener(e,run,{passive:true});});document.querySelectorAll('script[data-jd-delay]').forEach(function(old){var s=document.createElement('script');for(var i=0;i<old.attributes.length;i++){var a=old.attributes[i];if(a.name!=='type'&&a.name!=='data-jd-delay')s.setAttribute(a.name,a.value);}if(!old.src)s.text=old.text;old.parentNode.replaceChild(s,old);});}ev.forEach(function(e){addEventListener(e,run,{passive:true,once:true});});setTimeout(run,15000);})();
+	</script>
+	<?php
+}, 9 );

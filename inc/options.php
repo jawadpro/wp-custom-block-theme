@@ -67,6 +67,7 @@ function jd_option_fields() {
 				'custom_cursor'    => array( __( 'Custom cursor and magnetic buttons', 'jawad' ), 'checkbox', 1, __( 'Desktop mouse only.', 'jawad' ) ),
 				'page_transitions' => array( __( 'Page transitions', 'jawad' ), 'checkbox', 1, __( 'Uses the browser View Transitions API. No JavaScript.', 'jawad' ) ),
 				'hero_field'       => array( __( 'Animated dot field in hero', 'jawad' ), 'checkbox', 1, '' ),
+				'delay_chat'       => array( __( 'Load live chat after first interaction', 'jawad' ), 'checkbox', 1, __( 'Delays Tawk.to, Crisp, Tidio, LiveChat or Intercom until the visitor scrolls, taps or types, or after 15 seconds. Faster first paint.', 'jawad' ) ),
 			),
 		),
 		'seo'     => array(
