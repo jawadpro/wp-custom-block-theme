@@ -393,7 +393,8 @@ add_action( 'wp_head', function () {
 	}
 	printf( '<meta property="og:image:width" content="%d" />' . "\n", (int) $src[1] );
 	printf( '<meta property="og:image:height" content="%d" />' . "\n", (int) $src[2] );
-	printf( '<meta property="og:image:type" content="%s" />' . "\n", esc_attr( get_post_mime_type( $id ) ) );
+	$type = wp_check_filetype( (string) wp_parse_url( $first['url'], PHP_URL_PATH ) );
+	printf( '<meta property="og:image:type" content="%s" />' . "\n", esc_attr( $type['type'] ? $type['type'] : get_post_mime_type( $id ) ) );
 	$alt = (string) get_post_meta( $id, '_wp_attachment_image_alt', true );
 	if ( '' !== $alt ) {
 		printf( '<meta property="og:image:alt" content="%s" />' . "\n", esc_attr( $alt ) );
