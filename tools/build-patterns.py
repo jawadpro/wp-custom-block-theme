@@ -96,10 +96,10 @@ P['pricing'] = ('Pricing', 'jawad-sections', 'Project packages from the Pricing 
     block('jd/pricing', {'group': 'project'})), 'jd-section is-tight-top jd-wrap', 'section', 'pricing'))
 
 P['cta'] = ('Big call to action', 'jawad-sections', 'Full-width cobalt panel with the free audit offer.', group(group(J(
-    p('Free · No call needed', 'jd-label'),
+    p('Free quote · No obligation', 'jd-label'),
     h('Slow, broken,<br>or not selling?', 2, 'jd-cta__title'),
-    p('Tell me what is wrong with your site, or what you want to build, and get a written fixed quote. Not sure yet? Run the free website check first.', 'jd-lead'),
-    buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('Run the free check', url('/wordpress-website-health-check/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
+    p('Tell me what is wrong with your site, or what you want to build. You get a written fixed price and timeline within 24 hours.', 'jd-lead'),
+    buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
 
 pay = [('Fixed quote', 'Written scope and price before any work starts. No hourly surprises.'),
        ('Milestones', 'Usually 40% to start, 40% at design approval, 20% at launch.'),

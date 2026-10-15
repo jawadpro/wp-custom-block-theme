@@ -48,15 +48,15 @@ function jd_option_fields() {
 			),
 		),
 		'cta'     => array(
-			'title'  => __( 'Free audit offer', 'jawad' ),
+			'title'  => __( 'Offer card', 'jawad' ),
 			'fields' => array(
 				'audit_on'    => array( __( 'Show offer card in menu', 'jawad' ), 'checkbox', 1, '' ),
-				'audit_badge' => array( __( 'Badge on hero card', 'jawad' ), 'text', 'Free', __( 'One short word or number, e.g. Free or 48h.', 'jawad' ) ),
-				'audit_label' => array( __( 'Label', 'jawad' ), 'text', 'Free website check', '' ),
-				'audit_title' => array( __( 'Title', 'jawad' ), 'text', 'Is your site slow or at risk?', '' ),
-				'audit_text'  => array( __( 'Text', 'jawad' ), 'textarea', 'Send your URL and get the fixes that matter most for speed, security and leads.', '' ),
+				'audit_badge' => array( __( 'Badge on hero card', 'jawad' ), 'text', '24h', __( 'One short word or number, e.g. Free or 48h.', 'jawad' ) ),
+				'audit_label' => array( __( 'Label', 'jawad' ), 'text', 'Free project review', '' ),
+				'audit_title' => array( __( 'Title', 'jawad' ), 'text', 'Get a fixed quote, not a guess', '' ),
+				'audit_text'  => array( __( 'Text', 'jawad' ), 'textarea', 'Tell me what you need. You get a written price and timeline within 24 hours.', '' ),
 				'audit_url'   => array( __( 'Button link', 'jawad' ), 'url', '/contact/', '' ),
-				'audit_cta'   => array( __( 'Button label', 'jawad' ), 'text', 'Check my website', '' ),
+				'audit_cta'   => array( __( 'Button label', 'jawad' ), 'text', 'Start my quote', '' ),
 			),
 		),
 		'motion'  => array(
