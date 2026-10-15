@@ -362,3 +362,40 @@ add_action( 'wp_footer', function () {
 	</script>
 	<?php
 }, 99 );
+
+/**
+ * Yoast sometimes prints og:image without its dimensions (for example when the image was set by URL).
+ * Facebook and LinkedIn skip images on first share without them, so add width, height, type and alt.
+ */
+add_action( 'wp_head', function () {
+	if ( ! function_exists( 'YoastSEO' ) || is_admin() ) {
+		return;
+	}
+	try {
+		$images = YoastSEO()->meta->for_current_page()->open_graph_images;
+	} catch ( Throwable $e ) {
+		return;
+	}
+	if ( ! $images || ! is_array( $images ) ) {
+		return;
+	}
+	$first = reset( $images );
+	if ( ! empty( $first['width'] ) || empty( $first['url'] ) ) {
+		return;
+	}
+	$id = attachment_url_to_postid( $first['url'] );
+	if ( ! $id ) {
+		return;
+	}
+	$src = wp_get_attachment_image_src( $id, 'full' );
+	if ( ! $src ) {
+		return;
+	}
+	printf( '<meta property="og:image:width" content="%d" />' . "\n", (int) $src[1] );
+	printf( '<meta property="og:image:height" content="%d" />' . "\n", (int) $src[2] );
+	printf( '<meta property="og:image:type" content="%s" />' . "\n", esc_attr( get_post_mime_type( $id ) ) );
+	$alt = (string) get_post_meta( $id, '_wp_attachment_image_alt', true );
+	if ( '' !== $alt ) {
+		printf( '<meta property="og:image:alt" content="%s" />' . "\n", esc_attr( $alt ) );
+	}
+}, 99 );
