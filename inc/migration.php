@@ -20,6 +20,15 @@ add_action( 'template_redirect', function () {
 	$home = (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH );
 	$rel  = '/' . ltrim( substr( $path, strlen( rtrim( $home, '/' ) ) ), '/' );
 
+	// Retired URLs listed in the jd_redirects option (array of '/old-path/' => '/new-path/').
+	$map = (array) get_option( 'jd_redirects', array() );
+	$key = trailingslashit( $rel );
+	if ( isset( $map[ $key ] ) ) {
+		$to = (string) $map[ $key ];
+		wp_safe_redirect( 0 === strpos( $to, '/' ) ? home_url( $to ) : $to, 301, 'Jawad theme' );
+		exit;
+	}
+
 	if ( ! preg_match( '#^/projects(?:/([^/]+))?/?$#', $rel, $m ) ) {
 		return;
 	}
