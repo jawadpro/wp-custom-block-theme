@@ -458,7 +458,7 @@ html:not(.jd-js) .jd-marquee__track, body:not(.jd-motion) .jd-marquee__track { a
 .jd-fcols p { margin: 0; }
 .jd-fcols a { color: var(--soft); transition: color .2s; }
 .jd-fcols a:hover { color: var(--mint); }
-.jd-wordmark { font-family: var(--display); font-stretch: 62%; font-variation-settings: 'wdth' 62; font-weight: 850; text-transform: uppercase; font-size: clamp(56px, 17.2vw, 300px); line-height: .8; margin: 80px 0 0 !important; white-space: nowrap; overflow: hidden; padding-bottom: .04em; }
+.jd-wordmark { font-family: var(--display); font-stretch: 62%; font-variation-settings: 'wdth' 62; font-weight: 850; text-transform: uppercase; font-size: clamp(48px, 15vw, 300px); line-height: .8; margin: 80px 0 0 !important; white-space: nowrap; overflow: hidden; padding-bottom: .04em; }
 .jd-wordmark span { display: inline-block; }
 .jd-fbot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; margin-top: 28px !important; font-size: 13px; color: var(--muted); }
 .jd-fbot a { color: var(--muted); }

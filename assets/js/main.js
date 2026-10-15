@@ -443,6 +443,35 @@
 		} );
 	} );
 
+	/* Footer wordmark: size the name to fill its container exactly ------------- */
+	safe( 'wordmark-fit', function () {
+		var marks = $$( '.jd-wordmark' );
+		if ( ! marks.length ) {
+			return;
+		}
+		function fit() {
+			marks.forEach( function ( w ) {
+				w.style.fontSize = '100px';
+				var a = w.firstElementChild;
+				var z = w.lastElementChild;
+				var natural = a && z ? z.getBoundingClientRect().right - a.getBoundingClientRect().left : w.scrollWidth;
+				var avail = w.clientWidth;
+				if ( natural > 0 && avail > 0 ) {
+					w.style.fontSize = Math.min( 340, Math.floor( ( 100 * avail ) / natural * 0.995 ) ) + 'px';
+				}
+			} );
+		}
+		fit();
+		if ( d.fonts && d.fonts.ready ) {
+			d.fonts.ready.then( fit );
+		}
+		var t;
+		window.addEventListener( 'resize', function () {
+			clearTimeout( t );
+			t = setTimeout( fit, 120 );
+		} );
+	} );
+
 	/* Hero screen shrinks as you leave it --------------------------------- */
 	safe( 'screen', function () {
 		if ( ! motion ) {
