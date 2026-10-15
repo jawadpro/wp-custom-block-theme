@@ -101,7 +101,7 @@ function jd_import_starter() {
 
 	/* Pages ------------------------------------------------------------- */
 	$home    = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Home', 'post_name' => 'home', 'post_content' => jd_pattern_markup( 'jawad/page-home' ), 'menu_order' => 0 ), array(), $log );
-	$about   = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'About', 'post_name' => 'about', 'post_content' => jd_pattern_markup( 'jawad/page-about' ), 'page_template' => 'page-blank', 'menu_order' => 3 ), array( '_jd_seo_desc' => 'Jawad Ilyas is a WordPress developer with more than ten years of experience building fast, conversion-focused sites for small businesses.' ), $log );
+	$about   = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'About', 'post_name' => 'about', 'post_content' => jd_pattern_markup( 'jawad/page-about' ), 'page_template' => 'page-blank', 'menu_order' => 3 ), array( '_jd_seo_desc' => 'Jawad Ilyas is a WordPress developer with more than ten years of experience building fast, conversion-focused sites for businesses of every size.' ), $log );
 	$contact = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Contact', 'post_name' => 'contact', 'post_content' => jd_pattern_markup( 'jawad/page-contact' ), 'page_template' => 'page-blank', 'menu_order' => 5 ), array( '_jd_seo_desc' => 'Tell me about your WordPress project. You get a reply within 24 hours and a written fixed quote after a short call.' ), $log );
 	$journal = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Journal', 'post_name' => 'journal', 'post_content' => '', 'menu_order' => 4 ), array(), $log );
 

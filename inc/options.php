@@ -24,7 +24,7 @@ function jd_option_fields() {
 				'availability_text' => array( __( 'Availability text', 'jawad' ), 'text', 'Taking 2 new projects this month', __( 'Keep it true and update it monthly.', 'jawad' ) ),
 				'badge_2'           => array( __( 'Hero badge 2', 'jawad' ), 'text', 'Top Rated on Upwork', __( 'Leave empty to hide.', 'jawad' ) ),
 				'badge_3'           => array( __( 'Hero badge 3', 'jawad' ), 'text', 'Fixed-price quotes', __( 'Leave empty to hide.', 'jawad' ) ),
-				'footer_blurb'      => array( __( 'Footer description', 'jawad' ), 'textarea', 'WordPress developer for small businesses. Fast sites, clear offers, and replies inside your working day.', '' ),
+				'footer_blurb'      => array( __( 'Footer description', 'jawad' ), 'textarea', 'WordPress developer for startups, growing businesses and established brands. Fast sites, clear offers, and replies inside your working day.', '' ),
 			),
 		),
 		'contact' => array(
@@ -79,7 +79,7 @@ function jd_option_fields() {
 				'seo_on'          => array( __( 'Built-in SEO tags', 'jawad' ), 'checkbox', 1, __( 'Meta descriptions, Open Graph, Twitter cards and JSON-LD. Switches itself off when Yoast, Rank Math, SEOPress or AIOSEO is active.', 'jawad' ) ),
 				'title_sep'       => array( __( 'Title separator', 'jawad' ), 'text', '|', '' ),
 				'home_title'      => array( __( 'Home page title', 'jawad' ), 'text', 'Jawad Ilyas | WordPress Developer for Fast, High-Converting Websites', '' ),
-				'home_desc'       => array( __( 'Home page meta description', 'jawad' ), 'textarea', 'WordPress developer who builds fast, conversion-focused WordPress and WooCommerce websites for small businesses. Fixed quotes, clear process, replies within 24 hours.', __( 'Aim for 140 to 160 characters.', 'jawad' ) ),
+				'home_desc'       => array( __( 'Home page meta description', 'jawad' ), 'textarea', 'WordPress developer who builds fast, conversion-focused WordPress and WooCommerce websites for businesses of every size. Fixed quotes, clear process, replies within 24 hours.', __( 'Aim for 140 to 160 characters.', 'jawad' ) ),
 				'default_desc'    => array( __( 'Fallback meta description', 'jawad' ), 'textarea', 'Fast, SEO-friendly WordPress websites, WooCommerce stores, speed fixes and care plans by Jawad Ilyas.', '' ),
 				'work_desc'       => array( __( 'Work archive description', 'jawad' ), 'textarea', 'Selected WordPress websites, landing pages and WooCommerce stores, with the results they produced.', '' ),
 				'services_desc'   => array( __( 'Services archive description', 'jawad' ), 'textarea', 'WordPress website design, WooCommerce stores, speed optimization and monthly care plans with fixed, upfront pricing.', '' ),

@@ -68,7 +68,7 @@ P['proof'] = ('Proof numbers', 'jawad-sections', 'Four large count-up numbers.',
 
 P['statement'] = ('Problem statement', 'jawad-sections', 'Large statement that lights up word by word on scroll.', group(J(
     p('The problem', 'jd-label'),
-    p('Most small business websites are slow, confusing, and quietly losing leads. I build sites that load in under two seconds, explain what you do at a glance, and make the <em>next step</em> obvious.', 'jd-statement__text jd-fill')), 'jd-section jd-wrap jd-statement', 'section'))
+    p('Most business websites are slow, confusing, and quietly losing leads. I build sites that load in under two seconds, explain what you do at a glance, and make the <em>next step</em> obvious.', 'jd-statement__text jd-fill')), 'jd-section jd-wrap jd-statement', 'section'))
 
 P['services-stack'] = ('Services stack', 'jawad-sections', 'Heading with sticky stacked service cards from the Services post type.', group(J(
     h('Four jobs.<br>Done properly.', 2, 'jd-section__title'),
@@ -132,7 +132,7 @@ P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
 P['page-about'] = ('About page', 'jawad-pages', 'About page with portrait, live clocks, principles and toolkit.', J(
     group(group(J(
         group(J(p('About', 'jd-label'), h('One developer.<br><em>No hand-offs.</em>', 1, 'jd-split'),
-                p("I'm Jawad Ilyas. I've built WordPress sites for more than ten years, mostly for small businesses that need a site to work hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
+                p("I'm Jawad Ilyas. I've built WordPress sites for more than ten years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
         group(p('JI', 'jd-portrait__ini'), 'jd-portrait')), 'jd-about'), 'jd-phero jd-wrap', 'section'),
     group(block('jd/clocks'), 'jd-wrap', 'section'),
     group(J(p('What you can count on', 'jd-label'), group(J(*[group(J(h(t, 3), p(d))) for t, d in princ]), 'jd-princ')), 'jd-section jd-wrap', 'section'),

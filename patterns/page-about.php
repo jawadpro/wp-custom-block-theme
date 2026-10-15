@@ -22,7 +22,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">I'm Jawad Ilyas. I've built WordPress sites for more than ten years, mostly for small businesses that need a site to work hard without babysitting. When you hire me, the person on the call is the person writing the code.</p>
+<p class="jd-lead">I'm Jawad Ilyas. I've built WordPress sites for more than ten years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

@@ -16,6 +16,6 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-statement__text jd-fill"} -->
-<p class="jd-statement__text jd-fill">Most small business websites are slow, confusing, and quietly losing leads. I build sites that load in under two seconds, explain what you do at a glance, and make the <em>next step</em> obvious.</p>
+<p class="jd-statement__text jd-fill">Most business websites are slow, confusing, and quietly losing leads. I build sites that load in under two seconds, explain what you do at a glance, and make the <em>next step</em> obvious.</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->
