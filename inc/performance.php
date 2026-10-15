@@ -107,3 +107,15 @@ add_action( 'wp_footer', function () {
 	</script>
 	<?php
 }, 9 );
+
+/**
+ * Generate WebP versions of uploaded PNG and JPEG sizes (WordPress keeps the original file).
+ * Typically 60-90% smaller. Toggle in Theme Options › Motion & speed.
+ */
+add_filter( 'image_editor_output_format', function ( $formats ) {
+	if ( jd_opt( 'webp_uploads' ) ) {
+		$formats['image/png']  = 'image/webp';
+		$formats['image/jpeg'] = 'image/webp';
+	}
+	return $formats;
+} );

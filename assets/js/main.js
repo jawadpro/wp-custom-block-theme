@@ -507,9 +507,10 @@
 							return -dist();
 						},
 						ease: 'none',
-						scrollTrigger: { trigger: section, start: 'top top', end: function () {
+						// Pin only once the whole row (cards, titles and descriptions) is on screen.
+						scrollTrigger: { trigger: $( '.jd-track-wrap', section ) || section, pin: section, start: 'bottom bottom-=32', end: function () {
 							return '+=' + dist();
-						}, pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 },
+						}, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 },
 					} );
 				} );
 			},

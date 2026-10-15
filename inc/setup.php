@@ -15,7 +15,7 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' ) );
 	add_editor_style( array( 'assets/css/main.css', 'assets/css/editor.css' ) );
-	add_image_size( 'jd-card', 1120, 840, true );
+	add_image_size( 'jd-card', 1200, 675, true );
 	add_image_size( 'jd-wide', 1800, 1012, true );
 } );
 
