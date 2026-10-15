@@ -86,7 +86,9 @@
 		if ( target ) {
 			e.preventDefault();
 			scrollToEl( target );
-			history.replaceState( null, '', url.hash );
+			try {
+				history.replaceState( null, '', url.hash );
+			} catch ( err ) {}
 		}
 	} );
 
@@ -264,7 +266,7 @@
 			return;
 		}
 		var cv = d.createElement( 'canvas' );
-		cv.className = 'jd-field';
+		cv.className = 'jd-dotfield';
 		cv.setAttribute( 'aria-hidden', 'true' );
 		screen.insertBefore( cv, screen.firstChild );
 		var ctx = cv.getContext( '2d' );
@@ -404,11 +406,20 @@
 			G.from( wrap.children, { y: 60, autoAlpha: 0, stagger: 0.1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: wrap, start: 'top 85%' } } );
 		} );
 		$$( '.jd-steps' ).forEach( function ( steps ) {
-			var bar = d.createElement( 'span' );
-			bar.className = 'jd-steps__bar';
-			bar.setAttribute( 'aria-hidden', 'true' );
-			steps.insertBefore( bar, steps.firstChild );
-			G.from( bar, { scaleX: 0, ease: 'none', scrollTrigger: { trigger: steps, start: 'top 80%', end: 'bottom 60%', scrub: true } } );
+			// The line is a CSS pseudo-element; scroll position drives its fill (0 to 1).
+			steps.style.setProperty( '--progress', '0' );
+			ST.create( {
+				trigger: steps,
+				start: 'top 85%',
+				end: 'top 35%',
+				scrub: true,
+				onUpdate: function ( self ) {
+					steps.style.setProperty( '--progress', self.progress.toFixed( 4 ) );
+				},
+				onRefresh: function ( self ) {
+					steps.style.setProperty( '--progress', self.progress.toFixed( 4 ) );
+				},
+			} );
 			G.from( $$( ':scope > .wp-block-group', steps ), { y: 40, autoAlpha: 0, stagger: 0.12, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: steps, start: 'top 80%' } } );
 		} );
 		$$( '.jd-portrait' ).forEach( function ( el ) {
@@ -611,7 +622,9 @@
 					if ( motion && shown.length ) {
 						G.fromTo( shown, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.06, ease: 'expo.out', overwrite: true } );
 					}
-					history.replaceState( null, '', chip.href );
+					try {
+						history.replaceState( null, '', chip.href );
+					} catch ( err ) {}
 					if ( ST ) {
 						ST.refresh();
 					}

@@ -15,5 +15,5 @@
 <p class="jd-label">Questions clients ask first</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jd/faq /--></section>
+<!-- wp:jd/faq {"group":"general"} /--></section>
 <!-- /wp:group -->

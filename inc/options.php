@@ -40,6 +40,7 @@ function jd_option_fields() {
 				'linkedin_url'    => array( __( 'LinkedIn', 'jawad' ), 'url', 'https://www.linkedin.com/in/jawadjddev/', '' ),
 				'github_url'      => array( __( 'GitHub', 'jawad' ), 'url', 'https://github.com/jawadpro', '' ),
 				'x_url'           => array( __( 'X / Twitter', 'jawad' ), 'url', '', '' ),
+				'gf_form_id'      => array( __( 'Send form entries to Gravity Forms form ID', 'jawad' ), 'number', '', __( 'Optional. When set and Gravity Forms is active, the theme form submits into that form (fields matched by label: Name, Email, Website, Service, Budget, Timeline, Details), so its notifications, entries and SMTP apply.', 'jawad' ) ),
 				'form_success'    => array( __( 'Form success message', 'jawad' ), 'textarea', "Thanks. I'll reply within 24 hours with next steps and a time for a quick call.", '' ),
 				'live_tz'         => array( __( 'Client time zone for live status', 'jawad' ), 'text', 'America/New_York', __( 'Any PHP time zone name.', 'jawad' ) ),
 				'live_start'      => array( __( 'Live hours start (0-23, client time)', 'jawad' ), 'number', 9, '' ),
@@ -49,12 +50,13 @@ function jd_option_fields() {
 		'cta'     => array(
 			'title'  => __( 'Free audit offer', 'jawad' ),
 			'fields' => array(
-				'audit_on'    => array( __( 'Show audit card in menu', 'jawad' ), 'checkbox', 1, '' ),
-				'audit_label' => array( __( 'Label', 'jawad' ), 'text', 'Free · 48 hours', '' ),
-				'audit_title' => array( __( 'Title', 'jawad' ), 'text', 'Website health check', '' ),
-				'audit_text'  => array( __( 'Text', 'jawad' ), 'textarea', 'Send your URL. Get a short video with the three fixes that matter most.', '' ),
+				'audit_on'    => array( __( 'Show offer card in menu', 'jawad' ), 'checkbox', 1, '' ),
+				'audit_badge' => array( __( 'Badge on hero card', 'jawad' ), 'text', 'Free', __( 'One short word or number, e.g. Free or 48h.', 'jawad' ) ),
+				'audit_label' => array( __( 'Label', 'jawad' ), 'text', 'Free website check', '' ),
+				'audit_title' => array( __( 'Title', 'jawad' ), 'text', 'Is your site slow or at risk?', '' ),
+				'audit_text'  => array( __( 'Text', 'jawad' ), 'textarea', 'Send your URL and get the fixes that matter most for speed, security and leads.', '' ),
 				'audit_url'   => array( __( 'Button link', 'jawad' ), 'url', '/contact/', '' ),
-				'audit_cta'   => array( __( 'Button label', 'jawad' ), 'text', 'Get my audit', '' ),
+				'audit_cta'   => array( __( 'Button label', 'jawad' ), 'text', 'Check my website', '' ),
 			),
 		),
 		'motion'  => array(

@@ -64,6 +64,31 @@ function jd_handle_contact() {
 
 	set_transient( $ip_key, $hits + 1, HOUR_IN_SECONDS );
 
+	// Hand the entry to Gravity Forms when configured, so its entries, notifications and SMTP apply.
+	$gf_id = (int) jd_opt( 'gf_form_id' );
+	if ( $gf_id && class_exists( 'GFAPI' ) ) {
+		$sent = jd_submit_to_gravity_forms(
+			$gf_id,
+			array(
+				'name'     => $name,
+				'email'    => $email,
+				'website'  => $website,
+				'service'  => $type,
+				'budget'   => $budget,
+				'timeline' => $when,
+				'details'  => $details,
+			)
+		);
+		if ( true === $sent ) {
+			if ( $is_ajax ) {
+				wp_send_json_success( array( 'message' => jd_opt( 'form_success' ) ) );
+			}
+			wp_safe_redirect( add_query_arg( 'jd_sent', 'ok', $ref ) . '#contact' );
+			exit;
+		}
+		// Fall through to the built-in handler if Gravity Forms rejected the entry, so no lead is lost.
+	}
+
 	$lead_id = wp_insert_post(
 		array(
 			'post_type'    => 'jd_lead',
@@ -105,4 +130,52 @@ function jd_handle_contact() {
 	}
 	wp_safe_redirect( add_query_arg( 'jd_sent', 'ok', $ref ) . '#contact' );
 	exit;
+}
+
+/**
+ * Submit values into a Gravity Forms form, matching fields by label or parameter name.
+ * Returns true on success, or a WP_Error describing why it failed.
+ */
+function jd_submit_to_gravity_forms( $form_id, $values ) {
+	$form = GFAPI::get_form( $form_id );
+	if ( ! $form || empty( $form['fields'] ) ) {
+		return new WP_Error( 'jd_gf_missing', 'Form not found' );
+	}
+	$keys = array(
+		'name'     => array( 'name', 'your name', 'full name' ),
+		'email'    => array( 'email', 'email address', 'your email' ),
+		'website'  => array( 'website', 'current website', 'url', 'site' ),
+		'service'  => array( 'service', 'project type', 'project', 'type' ),
+		'budget'   => array( 'budget', 'budget range' ),
+		'timeline' => array( 'timeline', 'when', 'timing' ),
+		'details'  => array( 'details', 'project details', 'message', 'what should i know?' ),
+	);
+	$input = array();
+	foreach ( $form['fields'] as $field ) {
+		$label = strtolower( trim( (string) $field->label ) );
+		$param = strtolower( trim( (string) $field->inputName ) );
+		foreach ( $keys as $key => $aliases ) {
+			if ( in_array( $label, $aliases, true ) || in_array( $param, $aliases, true ) ) {
+				if ( 'name' === $field->type && is_array( $field->inputs ) ) {
+					$parts = preg_split( '/\s+/', $values['name'], 2 );
+					foreach ( $field->inputs as $sub ) {
+						$suffix = substr( (string) $sub['id'], strpos( (string) $sub['id'], '.' ) + 1 );
+						if ( '3' === $suffix ) {
+							$input[ 'input_' . str_replace( '.', '_', $sub['id'] ) ] = $parts[0];
+						} elseif ( '6' === $suffix ) {
+							$input[ 'input_' . str_replace( '.', '_', $sub['id'] ) ] = $parts[1] ?? '';
+						}
+					}
+				} else {
+					$input[ 'input_' . $field->id ] = $values[ $key ];
+				}
+				break;
+			}
+		}
+	}
+	$result = GFAPI::submit_form( $form_id, $input );
+	if ( is_wp_error( $result ) ) {
+		return $result;
+	}
+	return ! empty( $result['is_valid'] ) ? true : new WP_Error( 'jd_gf_invalid', 'Gravity Forms validation failed', $result['validation_messages'] ?? array() );
 }

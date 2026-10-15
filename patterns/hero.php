@@ -20,12 +20,12 @@
 <!-- /wp:heading -->
 
 <!-- wp:group {"className":"jd-hero__row"} -->
-<div class="wp-block-group jd-hero__row"><!-- wp:paragraph {"className":"jd-lead"} -->
+<div class="wp-block-group jd-hero__row"><!-- wp:group {"className":"jd-hero__main"} -->
+<div class="wp-block-group jd-hero__main"><!-- wp:paragraph {"className":"jd-lead"} -->
 <p class="jd-lead">Your website should bring in calls, bookings and sales, not just look nice. I build fast WordPress and WooCommerce sites that make it easy for people to choose you, then keep them running so you can focus on the business.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:group {"className":"jd-hero__side"} -->
-<div class="wp-block-group jd-hero__side"><!-- wp:buttons {"className":"is-large"} -->
+<!-- wp:buttons {"className":"is-large"} -->
 <div class="wp-block-buttons is-large"><!-- wp:button {"className":"jd-mag"} -->
 <div class="wp-block-button jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get a fixed quote</a></div>
 <!-- /wp:button -->
@@ -33,10 +33,10 @@
 <!-- wp:button {"className":"is-style-ghost jd-mag"} -->
 <div class="wp-block-button is-style-ghost jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/work/' ) ); ?>">See the work</a></div>
 <!-- /wp:button --></div>
-<!-- /wp:buttons -->
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
 
-<!-- wp:jd/speed-ring /--></div>
-<!-- /wp:group --></div>
+<!-- wp:jd/offer /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

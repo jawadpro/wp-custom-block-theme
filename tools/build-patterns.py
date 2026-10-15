@@ -58,10 +58,10 @@ P['hero'] = ('Home hero', 'jawad-sections', 'Rounded hero screen with headline, 
     block('jd/badges'),
     h('Turn visitors<br>into <strong>paying</strong><br>clients.', 1, 'jd-hero__title jd-split'),
     group(J(
-        p('Your website should bring in calls, bookings and sales, not just look nice. I build fast WordPress and WooCommerce sites that make it easy for people to choose you, then keep them running so you can focus on the business.', 'jd-lead'),
         group(J(
-            buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large'),
-            block('jd/speed-ring')), 'jd-hero__side')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
+            p('Your website should bring in calls, bookings and sales, not just look nice. I build fast WordPress and WooCommerce sites that make it easy for people to choose you, then keep them running so you can focus on the business.', 'jd-lead'),
+            buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
+        block('jd/offer')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
 
 stats = [('10+', 'years building on WordPress'), ('500+', 'sites built, fixed or sped up'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
 P['proof'] = ('Proof numbers', 'jawad-sections', 'Four large count-up numbers.', group(group(J(*[group(J(p(n, 'jd-stat__n'), p(t, 'jd-muted'))) for n, t in stats]), 'jd-proof'), 'jd-wrap', 'section'))
@@ -98,8 +98,8 @@ P['pricing'] = ('Pricing', 'jawad-sections', 'Project packages from the Pricing 
 P['cta'] = ('Big call to action', 'jawad-sections', 'Full-width cobalt panel with the free audit offer.', group(group(J(
     p('Free · No call needed', 'jd-label'),
     h('Slow, broken,<br>or not selling?', 2, 'jd-cta__title'),
-    p('Send me the URL. Within 48 hours you get a short video audit with the three fixes that would make the biggest difference.', 'jd-lead'),
-    buttons([button('Get my free audit', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
+    p('Tell me what is wrong with your site, or what you want to build, and get a written fixed quote. Not sure yet? Run the free website check first.', 'jd-lead'),
+    buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('Run the free check', url('/wordpress-website-health-check/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
 
 pay = [('Fixed quote', 'Written scope and price before any work starts. No hourly surprises.'),
        ('Milestones', 'Usually 40% to start, 40% at design approval, 20% at launch.'),
@@ -110,7 +110,11 @@ P['pay'] = ('Payment terms', 'jawad-sections', 'How paying works, three columns.
 
 P['faq-section'] = ('FAQ section', 'jawad-sections', 'Questions from the FAQs post type with FAQPage schema.', group(J(
     p('Questions clients ask first', 'jd-label'),
-    block('jd/faq')), 'jd-section is-tight-top jd-wrap jd-narrow', 'section'))
+    block('jd/faq', {'group': 'general'})), 'jd-section is-tight-top jd-wrap jd-narrow', 'section'))
+
+P['faq-home'] = ('Home FAQ', 'jawad-sections', 'Home page questions from the FAQs post type (group: home).', group(J(
+    h('Questions,<br>answered', 2, 'jd-section__title'),
+    block('jd/faq', {'group': 'home'})), 'jd-section is-tight-top jd-wrap jd-narrow', 'section'))
 
 princ = [('Replies inside 24 hours', "Usually much faster. If I'm away, you know in advance and in writing."),
          ('Progress you can see', 'A staging link from week one and a short video update at every milestone.'),
@@ -123,7 +127,7 @@ tools = ['WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types'
 P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
     pattern_ref('jawad/hero'), pattern_ref('jawad/proof'), pattern_ref('jawad/statement'), block('jd/marquee'),
     pattern_ref('jawad/services-stack'), pattern_ref('jawad/work-track'), pattern_ref('jawad/process'),
-    pattern_ref('jawad/testimonials'), pattern_ref('jawad/pricing'), pattern_ref('jawad/cta')))
+    pattern_ref('jawad/testimonials'), pattern_ref('jawad/pricing'), pattern_ref('jawad/faq-home'), pattern_ref('jawad/cta')))
 
 P['page-about'] = ('About page', 'jawad-pages', 'About page with portrait, live clocks, principles and toolkit.', J(
     group(group(J(

@@ -44,6 +44,11 @@ $jd_hour   = (int) $jd_client->format( 'G' );
 $jd_day    = (int) $jd_client->format( 'N' );
 $jd_online = $jd_day < 6 && $jd_hour >= (int) jd_opt( 'live_start' ) && $jd_hour < (int) jd_opt( 'live_end' );
 
+if ( '' === trim( (string) jd_opt( 'hours_text' ) ) ) {
+	printf( '<div %1$s>%2$s</div>', get_block_wrapper_attributes( array( 'class' => 'jd-clocks' ) ), $jd_cells ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return;
+}
+
 printf(
 	'<div %1$s>%2$s<div class="jd-clocks__status"><p class="jd-badge jd-live%3$s"><span class="jd-dot"></span><span class="jd-live__text">%4$s</span></p><p class="jd-muted">%5$s</p></div></div>',
 	get_block_wrapper_attributes( array( 'class' => 'jd-clocks' ) ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

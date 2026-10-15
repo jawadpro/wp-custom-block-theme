@@ -43,7 +43,7 @@ function jd_faq_schema_collect( $items = null ) {
 }
 
 add_action( 'wp_footer', function () {
-	if ( jd_seo_plugin_active() || ! jd_opt( 'seo_on' ) ) {
+	if ( ! jd_opt( 'seo_on' ) || ! apply_filters( 'jd_output_faq_schema', true ) ) {
 		return;
 	}
 	$items = jd_faq_schema_collect();

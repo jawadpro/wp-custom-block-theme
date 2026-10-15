@@ -72,7 +72,7 @@ $jd_email   = (string) jd_opt( 'email' );
 					<?php if ( $jd_email ) : ?>
 						<span><?php echo esc_html( $jd_email ); ?></span><br>
 					<?php endif; ?>
-					<span><?php echo esc_html( jd_opt( 'hours_text' ) ); ?></span>
+					<?php if ( jd_opt( 'hours_text' ) ) : ?><span><?php echo esc_html( jd_opt( 'hours_text' ) ); ?></span><?php endif; ?>
 				</p>
 				<p class="jd-overlay__social">
 					<?php

@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/offer",
+	"title": "Offer card",
+	"category": "jawad",
+	"icon": "megaphone",
+	"description": "Clickable offer card for the hero. Text comes from Theme Options \u203a Free audit offer unless set here.",
+	"textdomain": "jawad",
+	"attributes": {
+		"badge": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

@@ -28,4 +28,6 @@
 
 <!-- wp:pattern {"slug":"jawad/pricing"} /-->
 
+<!-- wp:pattern {"slug":"jawad/faq-home"} /-->
+
 <!-- wp:pattern {"slug":"jawad/cta"} /-->
