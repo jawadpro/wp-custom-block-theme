@@ -857,6 +857,10 @@
 
 	/* Recalculate pinned sections once fonts and images settle ---------------- */
 	if ( motion ) {
+		// Triggers are created section by section, so a reveal set up before a pin further up the
+		// page would measure without that pin's spacer and fire early. Sort by page position first.
+		ST.sort();
+		ST.refresh();
 		if ( d.fonts && d.fonts.ready ) {
 			d.fonts.ready.then( function () {
 				ST.refresh();
