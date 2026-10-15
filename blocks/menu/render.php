@@ -65,6 +65,9 @@ $jd_email   = (string) jd_opt( 'email' );
 						<a class="jd-btn jd-btn--light" href="<?php echo esc_url( jd_opt( 'audit_url' ) ); ?>"><?php echo esc_html( jd_opt( 'audit_cta' ) ); ?></a>
 					</div>
 				<?php endif; ?>
+				<?php if ( jd_booking_url() ) : ?>
+					<a class="jd-btn jd-btn--line jd-book-btn" href="<?php echo esc_url( jd_book_page_url() ); ?>"><span class="jd-book-btn__dot" aria-hidden="true"></span><?php echo esc_html( jd_opt( 'book_label' ) ); ?></a>
+				<?php endif; ?>
 				<?php if ( jd_opt( 'availability_on' ) && jd_opt( 'availability_text' ) ) : ?>
 					<p class="jd-badge"><span class="jd-dot"></span><?php echo esc_html( jd_opt( 'availability_text' ) ); ?></p>
 				<?php endif; ?>

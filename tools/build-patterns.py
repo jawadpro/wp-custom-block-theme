@@ -143,6 +143,15 @@ P['page-contact'] = ('Contact page', 'jawad-pages', 'Contact page with the quote
     group(J(p('Contact', 'jd-label'), h("Let's build<br><em>something good.</em>", 1, 'jd-split')), 'jd-phero jd-wrap', 'section'),
     group(group(J(block('jd/contact-form'), block('jd/contact-card')), 'jd-contact'), 'jd-wrap jd-contact-sec', 'section', 'contact')))
 
+P['page-book'] = ('Book a call page', 'jawad-pages', 'Book a 20-minute call: intro, what we cover, and the embedded booking calendar.', J(
+    group(J(p('Book a call', 'jd-label'), h("20 minutes.<br><em>Your project.</em>", 1, 'jd-split'),
+            p("Pick a time that suits you and you'll get a Google Meet link straight away. We'll talk through what you need, and you'll leave with a clear next step, even if that isn't me.", 'jd-lead')), 'jd-phero jd-wrap', 'section'),
+    group(group(J(
+        group(J(p('What we cover', 'jd-label'),
+                '<!-- wp:list {"ordered":true,"className":"jd-next"} -->\n<ol class="wp-block-list jd-next"><!-- wp:list-item -->\n<li>Your goals, and what the site needs to do for the business</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>What you have now: site, hosting, content, deadlines</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>An honest view on scope, timeline and budget</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>A written fixed quote within 24 hours of the call</li>\n<!-- /wp:list-item --></ol>\n<!-- /wp:list -->',
+                p('Prefer writing? <a href="' + url('/contact/') + '">Send the details instead</a>.', 'jd-muted')), 'jd-box jd-book__side'),
+        block('jd/booking')), 'jd-book'), 'jd-wrap jd-section is-tight-top', 'section', 'book')))
+
 for slug, (title, cat, desc, content) in P.items():
     inserter = 'yes'
     header = f"""<?php

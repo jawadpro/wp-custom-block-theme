@@ -202,6 +202,30 @@ html.is-menu-open { overflow: hidden; }
 }
 @media (max-width: 420px) { .jd-nav__cta { display: none !important; } }
 
+/* Book a call ------------------------------------------------------------ */
+
+.jd-book-btn { gap: 9px; white-space: nowrap; }
+.jd-book-btn__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 0 rgba(92, 242, 200, .6); animation: jd-ping 1.8s ease-out infinite; flex: none; }
+.jd-nav__book { flex: none; min-height: 46px; padding: 10px 16px; font-size: 15px; }
+.jd-nav:has(.jd-nav__book) { width: min(calc(100% - 32px), 1040px); }
+@media (max-width: 1100px) { .jd-nav__book { display: none !important; } }
+.jd-overlay__aside .jd-book-btn { align-self: flex-start; }
+
+.jd-book { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 40px; align-items: start; }
+.jd-book__side { position: sticky; top: 110px; }
+.jd-book__side .jd-next { gap: 12px; }
+.jd-book__side .jd-next li { padding-left: 26px; position: relative; color: var(--soft); }
+.jd-book__side .jd-next li::before { content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 2px; background: var(--mint); }
+@media (max-width: 900px) { .jd-book { grid-template-columns: 1fr; } .jd-book__side { position: static; } }
+
+.jd-booking { border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--ink-2); overflow: hidden; }
+.jd-booking iframe { display: block; width: 100%; height: var(--jd-booking-h, 760px); border: 0; background: transparent; color-scheme: normal; }
+.jd-booking--google { background: #fff; }
+.jd-booking__alt { margin: 0; padding: 12px 20px; font-size: 14px; border-top: 1px solid var(--line); background: var(--ink-2); }
+.jd-booking--empty { padding: 32px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.jd-booking--empty p { margin: 0; max-width: 46ch; }
+@media (max-width: 700px) { .jd-booking iframe { height: max(var(--jd-booking-h, 760px), 900px); } }
+
 /* Main ------------------------------------------------------------------- */
 
 .jd-main { display: block; }

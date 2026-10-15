@@ -58,3 +58,63 @@ function jd_seo_plugin_active() {
 		|| defined( 'THE_SEO_FRAMEWORK_VERSION' )
 		|| class_exists( 'SQ_Classes_ObjController' );
 }
+
+/**
+ * The external booking link (Cal.com, Calendly, Google appointment schedule), or ''.
+ */
+function jd_booking_url() {
+	return (string) jd_opt( 'calendly_url' );
+}
+
+/**
+ * Where on-site "Book a call" buttons point: the Book page, or the booking link itself if no page is set.
+ */
+function jd_book_page_url() {
+	$page = trim( (string) jd_opt( 'book_page' ) );
+	if ( '' === $page ) {
+		return jd_booking_url();
+	}
+	return 0 === strpos( $page, '/' ) ? home_url( $page ) : $page;
+}
+
+/**
+ * Which booking service a link belongs to: cal, calendly, google or other.
+ */
+function jd_booking_provider( $url ) {
+	$host = strtolower( (string) wp_parse_url( $url, PHP_URL_HOST ) );
+	if ( preg_match( '/(^|\.)cal\.(com|eu)$/', $host ) ) {
+		return 'cal';
+	}
+	if ( false !== strpos( $host, 'calendly.com' ) ) {
+		return 'calendly';
+	}
+	if ( 'calendar.google.com' === $host || 'calendar.app.google' === $host ) {
+		return 'google';
+	}
+	return 'other';
+}
+
+/**
+ * Embed URL for the booking link, themed to match the site where the service allows it.
+ */
+function jd_booking_embed_src( $url ) {
+	switch ( jd_booking_provider( $url ) ) {
+		case 'cal':
+			return add_query_arg( array( 'embed' => 'true', 'theme' => 'dark', 'layout' => 'month_view' ), $url );
+		case 'calendly':
+			return add_query_arg(
+				array(
+					'embed_domain'     => (string) wp_parse_url( home_url(), PHP_URL_HOST ),
+					'embed_type'       => 'Inline',
+					'hide_gdpr_banner' => '1',
+					'background_color' => '0f1528',
+					'text_color'       => 'f4f6fb',
+					'primary_color'    => '3d5afe',
+				),
+				$url
+			);
+		case 'google':
+			return add_query_arg( 'gv', 'true', $url );
+	}
+	return $url;
+}

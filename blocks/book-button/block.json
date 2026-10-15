@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/book-button",
+	"title": "Book a call button",
+	"category": "jawad",
+	"icon": "calendar-alt",
+	"description": "Links to the Book page. Hidden until a call booking link is set in Theme Options › Contact & social.",
+	"textdomain": "jawad",
+	"attributes": {
+		"label": { "type": "string", "default": "" },
+		"variant": { "type": "string", "default": "line", "enum": [ "line", "primary", "light" ] }
+	},
+	"supports": { "html": false, "className": true, "reusable": false },
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

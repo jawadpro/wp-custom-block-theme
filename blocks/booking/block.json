@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/booking",
+	"title": "Call booking calendar",
+	"category": "jawad",
+	"icon": "calendar-alt",
+	"description": "Embeds the booking link from Theme Options › Contact & social (Cal.com, Calendly or Google Calendar appointment schedule).",
+	"textdomain": "jawad",
+	"attributes": {
+		"url": { "type": "string", "default": "" },
+		"height": { "type": "number", "default": 760 }
+	},
+	"supports": { "html": false, "anchor": true, "className": true, "reusable": false },
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

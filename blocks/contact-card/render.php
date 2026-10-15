@@ -24,8 +24,8 @@ $jd_phone    = (string) jd_opt( 'phone' );
 	<?php if ( $jd_calendly ) : ?>
 		<div class="jd-box">
 			<p class="jd-label"><?php esc_html_e( 'Prefer to talk?', 'jawad' ); ?></p>
-			<p><?php esc_html_e( 'Pick a 20-minute slot that suits you. No slideshow, just your project.', 'jawad' ); ?></p>
-			<a class="jd-btn jd-btn--primary" href="<?php echo esc_url( $jd_calendly ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Book a call', 'jawad' ); ?> <?php echo jd_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+			<p><?php esc_html_e( 'Rather talk it through? Pick a 20-minute Google Meet slot that suits you. No slideshow, just your project.', 'jawad' ); ?></p>
+			<a class="jd-btn jd-btn--primary jd-book-btn" href="<?php echo esc_url( jd_book_page_url() ); ?>"><span class="jd-book-btn__dot" aria-hidden="true"></span><?php echo esc_html( jd_opt( 'book_label' ) ); ?></a>
 		</div>
 	<?php endif; ?>
 	<div class="jd-box">
