@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/menu",
+	"title": "Menu toggle",
+	"category": "jawad",
+	"icon": "menu",
+	"description": "Burger button with the full-screen overlay menu. Links come from the site navigation menu.",
+	"textdomain": "jawad",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

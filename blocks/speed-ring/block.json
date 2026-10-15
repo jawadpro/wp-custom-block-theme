@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/speed-ring",
+	"title": "Speed ring",
+	"category": "jawad",
+	"icon": "performance",
+	"description": "Animated score ring with a short caption.",
+	"textdomain": "jawad",
+	"attributes": {
+		"value": {
+			"type": "number",
+			"default": 98,
+			"minimum": 0,
+			"maximum": 100
+		},
+		"label": {
+			"type": "string",
+			"default": "Mobile PageSpeed"
+		},
+		"text": {
+			"type": "string",
+			"default": "What a speed rebuild looks like, measured."
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,10 @@
+/* Editor-only adjustments so the canvas matches the front end without fixed positioning. */
+.editor-styles-wrapper { background: #0A0E1A; color: #F2F4FA; }
+.editor-styles-wrapper .jd-nav { position: relative; left: auto; transform: none; top: auto; margin: 12px auto; }
+.editor-styles-wrapper .jd-overlay { display: none !important; }
+.editor-styles-wrapper .jd-scard { position: relative; top: auto !important; }
+.editor-styles-wrapper .jd-track-wrap { overflow-x: auto; }
+.editor-styles-wrapper .jd-review:not(.is-on) { visibility: visible; opacity: 1; grid-area: auto; }
+.editor-styles-wrapper .jd-form .jd-step { display: block !important; }
+.editor-styles-wrapper .jd-marquee__track { animation: none !important; }
+.editor-styles-wrapper .jd-screen { min-height: 640px; }

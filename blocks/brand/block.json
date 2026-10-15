@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/brand",
+	"title": "Brand logo",
+	"category": "jawad",
+	"icon": "admin-home",
+	"description": "Logo tile and brand name linking home.",
+	"textdomain": "jawad",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/service-details",
+	"title": "Service details",
+	"category": "jawad",
+	"icon": "clipboard",
+	"description": "Price, timeline and inclusions for the current service.",
+	"textdomain": "jawad",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php",
+	"usesContext": [
+		"postId",
+		"postType"
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/marquee",
+	"title": "Marquee",
+	"category": "jawad",
+	"icon": "leftright",
+	"description": "Large scrolling words that react to scroll speed.",
+	"textdomain": "jawad",
+	"attributes": {
+		"items": {
+			"type": "string",
+			"default": "Business sites, WooCommerce, Speed fixes, Care plans, Figma to WordPress"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

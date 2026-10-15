@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/wordmark",
+	"title": "Footer wordmark",
+	"category": "jawad",
+	"icon": "editor-textcolor",
+	"description": "Giant brand name that rises letter by letter, with the copyright line.",
+	"textdomain": "jawad",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

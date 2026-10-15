@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/testimonials",
+	"title": "Testimonials",
+	"category": "jawad",
+	"icon": "format-quote",
+	"description": "Rotating client quotes with rating badges.",
+	"textdomain": "jawad",
+	"attributes": {
+		"count": {
+			"type": "number",
+			"default": 5,
+			"minimum": 1,
+			"maximum": 12
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

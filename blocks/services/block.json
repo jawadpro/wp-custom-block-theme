@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/services",
+	"title": "Services",
+	"category": "jawad",
+	"icon": "hammer",
+	"description": "Services from the Services post type, as a sticky stack or detailed rows.",
+	"textdomain": "jawad",
+	"attributes": {
+		"layout": {
+			"type": "string",
+			"enum": [
+				"stack",
+				"rows"
+			],
+			"default": "stack"
+		},
+		"count": {
+			"type": "number",
+			"default": 6,
+			"minimum": 1,
+			"maximum": 12
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/clocks",
+	"title": "Time zone clocks",
+	"category": "jawad",
+	"icon": "clock",
+	"description": "Live clocks and an online status.",
+	"textdomain": "jawad",
+	"attributes": {
+		"zones": {
+			"type": "string",
+			"default": "Asia/Karachi|Lahore, America/New_York|New York, America/Vancouver|Vancouver"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

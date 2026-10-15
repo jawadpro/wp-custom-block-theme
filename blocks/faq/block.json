@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/faq",
+	"title": "FAQ",
+	"category": "jawad",
+	"icon": "editor-help",
+	"description": "Questions from the FAQs post type, with FAQPage structured data.",
+	"textdomain": "jawad",
+	"attributes": {
+		"group": {
+			"type": "string",
+			"default": ""
+		},
+		"count": {
+			"type": "number",
+			"default": 12,
+			"minimum": 1,
+			"maximum": 30
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

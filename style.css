@@ -1,0 +1,17 @@
+/*
+Theme Name: Jawad
+Theme URI: https://jawadjd.dev
+Author: Jawad Ilyas
+Author URI: https://jawadjd.dev
+Description: A fast, SEO-ready block theme for a WordPress developer studio. Midnight and cobalt design, self-hosted fonts, custom post types for work, services, pricing, testimonials and FAQs, a theme options page, built-in SEO and scroll motion that respects reduced-motion settings.
+Requires at least: 6.6
+Tested up to: 7.1
+Requires PHP: 8.0
+Version: 1.0.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: jawad
+Tags: block-theme, full-site-editing, portfolio, one-column, custom-colors, editor-style, translation-ready
+*/
+
+/* Front-end styles live in assets/css/main.css. This file only carries the theme header. */
