@@ -422,6 +422,16 @@
 			} );
 			G.from( $$( ':scope > .wp-block-group', steps ), { y: 40, autoAlpha: 0, stagger: 0.12, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: steps, start: 'top 80%' } } );
 		} );
+		// Featured image opens out from a rounded window and settles its zoom as you scroll in.
+		$$( '.jd-feature-img' ).forEach( function ( fig ) {
+			var img = $( 'img', fig );
+			if ( ! img ) {
+				return;
+			}
+			var st = { trigger: fig, start: 'top 95%', end: 'top 30%', scrub: true };
+			G.fromTo( fig, { clipPath: 'inset(14% 7% 0% 7% round 32px)' }, { clipPath: 'inset(0% 0% 0% 0% round 32px)', ease: 'none', scrollTrigger: st } );
+			G.fromTo( img, { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: Object.assign( {}, st ) } );
+		} );
 		$$( '.jd-portrait' ).forEach( function ( el ) {
 			G.from( el, { clipPath: 'inset(100% 0 0 0)', duration: 1.4, ease: 'expo.inOut', delay: 0.2 } );
 		} );

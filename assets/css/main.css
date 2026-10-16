@@ -465,12 +465,11 @@ html:not(.jd-js) .jd-marquee__track, body:not(.jd-motion) .jd-marquee__track { a
 
 /* Inner page heroes */
 .jd-phero { padding-top: calc(150px + env(safe-area-inset-top, 0px)); padding-bottom: 56px; }
-.jd-phero h1, .jd-phero .wp-block-post-title { font-size: clamp(64px, 12vw, 200px) !important; margin: 20px 0 0 !important; }
+.jd-phero h1, .jd-phero .wp-block-post-title { font-size: clamp(52px, min(9vw, 13.5vh), 160px) !important; margin: 20px 0 0 !important; }
 .jd-phero h1 em, .jd-phero h1 strong { font-style: normal; font-weight: inherit; color: var(--mint); }
 .jd-phero .wp-block-post-excerpt { margin-top: 28px !important; }
 .jd-phero .wp-block-post-excerpt__excerpt { font-size: clamp(18px, 1.5vw, 21px); color: var(--soft); max-width: 58ch; margin: 0; }
 .jd-phero .jd-chips { margin-top: 40px !important; }
-.jd-phero--post h1 { font-size: clamp(44px, 7vw, 104px) !important; }
 .jd-meta-line { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .jd-meta-line > * { margin: 0 !important; }
 
@@ -514,7 +513,9 @@ html:not(.jd-js) .jd-marquee__track, body:not(.jd-motion) .jd-marquee__track { a
 .jd-facts-row dd { margin: 0; font-weight: 600; }
 .jd-facts-row a { border-bottom: 1.5px solid var(--mint); }
 .jd-feature-img { margin-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)) !important; }
+.jd-feature-img { border-radius: var(--r-lg); overflow: hidden; }
 .jd-feature-img img { border-radius: var(--r-lg); width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.single-post .jd-feature-img { max-width: 1040px; margin-inline: auto !important; width: calc(100% - var(--gutter) - var(--gutter-r)); }
 .jd-case { margin-top: 0 !important; }
 .jd-case__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px; }
 .jd-case__h { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -.02em; margin: 0 0 10px; }
@@ -627,7 +628,7 @@ html:not(.jd-js) .jd-marquee__track, body:not(.jd-motion) .jd-marquee__track { a
 .jd-section.is-tight-bottom { padding-bottom: 56px; }
 .jd-back { padding-top: 48px; }
 .jd-narrow { max-width: 1100px; }
-.jd-display { font-size: clamp(64px, 12vw, 200px) !important; margin: 20px 0 0 !important; }
+.jd-display { font-size: clamp(52px, min(9vw, 13.5vh), 160px) !important; margin: 20px 0 0 !important; }
 .jd-phero .wp-block-search { margin-top: 32px; max-width: 560px; }
 .jd-phero .wp-block-buttons { margin-top: 36px; }
 .jd-phero .jd-label { margin: 0; }
