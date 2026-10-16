@@ -671,6 +671,22 @@ html.lenis, html.lenis body { height: auto; }
 .jd-main .jd-prose hr { border: 0; border-top: 1px solid var(--line); margin: 3em 0; }
 .jd-main .jd-prose strong { color: var(--fg); }
 
+/* Previous / next post cards */
+.jd-main .jd-post-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 64px auto clamp(72px, 9vw, 120px) !important; padding-top: 40px; border-top: 1px solid var(--line); }
+.jd-main .jd-post-nav .wp-block-post-navigation-link { position: relative; margin: 0; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--ink-2); transition: border-color .3s, transform .3s var(--ease), background .3s; }
+.jd-main .jd-post-nav .post-navigation-link-next { grid-column: 2; align-items: flex-end; text-align: right; }
+.jd-main .jd-post-nav .wp-block-post-navigation-link::before { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mint); }
+.jd-main .jd-post-nav .post-navigation-link-previous::before { content: "\2190  Previous post"; }
+.jd-main .jd-post-nav .post-navigation-link-next::before { content: "Next post  \2192"; }
+.jd-main .jd-post-nav a { color: var(--fg); text-decoration: none; font-family: var(--display); font-weight: 700; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.25; letter-spacing: -.01em; }
+.jd-main .jd-post-nav a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.jd-main .jd-post-nav .wp-block-post-navigation-link:hover { border-color: var(--mint); background: var(--ink-3); transform: translateY(-3px); }
+.jd-main .jd-post-nav .wp-block-post-navigation-link:focus-within { border-color: var(--mint); }
+@media (max-width: 700px) {
+	.jd-main .jd-post-nav { grid-template-columns: 1fr; }
+	.jd-main .jd-post-nav .post-navigation-link-next { grid-column: auto; }
+}
+
 /* Single project: fact cards, case cards, content with a quote card beside it */
 .jd-facts-row { gap: 12px; padding-block: 0; border-block: 0; }
 .jd-facts-row > div { padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--r-md); background: rgba(255, 255, 255, .025); }
