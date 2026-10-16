@@ -882,12 +882,68 @@
 					paint( lo, hi );
 				}
 			}
+			est.jdSetType = function ( key ) {
+				var r = form.querySelector( 'input[name="type"][value="' + key + '"]' );
+				if ( r ) {
+					r.checked = true;
+					calc();
+				}
+			};
 			est.classList.add( 'is-live' );
 			form.addEventListener( 'change', calc );
 			form.addEventListener( 'submit', function ( e ) {
 				e.preventDefault();
 			} );
 			calc();
+			var pre = new URLSearchParams( location.search ).get( 'type' );
+			if ( pre && ! est.closest( 'dialog' ) ) {
+				est.jdSetType( pre );
+			}
+		} );
+
+		// "Estimate my exact cost" under a pricing card opens the estimator popup with that type picked.
+		var modal = $( '.jd-est-modal' );
+		if ( ! modal || 'function' !== typeof modal.showModal ) {
+			return;
+		}
+		d.body.appendChild( modal );
+		var inner = $( '.jd-est', modal );
+		var opener = null;
+		function shut() {
+			if ( modal.open ) {
+				modal.close();
+			}
+		}
+		modal.addEventListener( 'close', function () {
+			html.classList.remove( 'is-modal-open' );
+			if ( lenis ) {
+				lenis.start();
+			}
+			if ( opener ) {
+				opener.focus( { preventScroll: true } );
+			}
+		} );
+		modal.addEventListener( 'click', function ( e ) {
+			if ( e.target === modal || e.target.closest( '.jd-est-modal__close' ) ) {
+				shut();
+			}
+		} );
+		d.addEventListener( 'click', function ( e ) {
+			var a = e.target.closest ? e.target.closest( '[data-est]' ) : null;
+			if ( ! a ) {
+				return;
+			}
+			e.preventDefault();
+			opener = a;
+			if ( inner && inner.jdSetType ) {
+				inner.jdSetType( a.getAttribute( 'data-est' ) );
+			}
+			if ( lenis ) {
+				lenis.stop();
+			}
+			html.classList.add( 'is-modal-open' );
+			modal.showModal();
+			modal.scrollTop = 0;
 		} );
 	} );
 

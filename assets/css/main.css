@@ -745,6 +745,25 @@ html.lenis, html.lenis body { height: auto; }
 	.jd-est__list, .jd-est__note { display: none; }
 }
 
+/* Estimate link under pricing cards, and the estimator popup */
+.jd-plan__est { align-self: center; font-size: 15px; font-weight: 600; color: var(--mint); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .25s; }
+.jd-plan__est span { display: inline-block; transition: transform .3s var(--ease); }
+.jd-plan__est:hover { color: var(--mint); border-bottom-color: currentColor; }
+.jd-plan__est:hover span { transform: translateX(4px); }
+.jd-plan.is-hot .jd-plan__est { color: #fff; }
+.jd-est-modal { width: min(1200px, calc(100% - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: auto; padding: clamp(20px, 3vw, 44px); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--ink); color: var(--fg); overflow: auto; overscroll-behavior: contain; }
+.jd-est-modal::backdrop { background: rgba(5, 8, 16, .72); backdrop-filter: blur(6px); }
+.jd-est-modal[open] { animation: jd-modal-in .5s var(--ease); }
+@keyframes jd-modal-in { from { opacity: 0; transform: translateY(28px) scale(.98); } }
+.jd-est-modal__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.jd-est-modal__head .jd-label { margin: 0; }
+.jd-est-modal__title { margin: 12px 0 0; font-family: var(--display); font-stretch: 62%; font-variation-settings: 'wdth' 62; font-weight: 850; text-transform: uppercase; font-size: clamp(40px, 5vw, 72px); line-height: .9; }
+.jd-est-modal__close { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink-2); color: var(--fg); font-size: 26px; line-height: 1; cursor: pointer; transition: background .25s, color .25s, transform .3s var(--ease); }
+.jd-est-modal__close:hover { background: var(--mint); color: var(--ink); transform: rotate(90deg); }
+.jd-est-modal .jd-est { margin-top: 28px !important; }
+.jd-est-modal .jd-est__result { top: 0; }
+html.is-modal-open { overflow: hidden; }
+
 /* Playful extras (added by main.js only when motion is on) */
 .jd-progress { position: fixed; z-index: 60; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cobalt), var(--mint)); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none; }
 .jd-has-doodles { isolation: isolate; }

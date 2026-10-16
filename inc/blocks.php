@@ -174,3 +174,39 @@ function jd_estimator_config() {
 	);
 	return apply_filters( 'jd_estimator_config', $cfg );
 }
+
+/**
+ * Best estimator project type for a pricing plan, from its title.
+ */
+function jd_estimator_type_for( $title ) {
+	$t = strtolower( (string) $title );
+	if ( false !== strpos( $t, 'landing' ) ) {
+		return 'landing';
+	}
+	if ( preg_match( '/woo|store|shop/', $t ) ) {
+		return 'store';
+	}
+	if ( false !== strpos( $t, 'redesign' ) ) {
+		return 'redesign';
+	}
+	return 'business';
+}
+
+/**
+ * Prints the estimator popup once per page.
+ */
+function jd_estimator_modal() {
+	static $done = false;
+	if ( $done ) {
+		return;
+	}
+	$done = true;
+	$est  = render_block( array( 'blockName' => 'jd/estimator', 'attrs' => array(), 'innerBlocks' => array(), 'innerHTML' => '', 'innerContent' => array() ) );
+	printf(
+		'<dialog class="jd-est-modal" aria-labelledby="jd-est-modal-t" data-lenis-prevent><div class="jd-est-modal__head"><div><p class="jd-label">%1$s</p><h2 class="jd-est-modal__title" id="jd-est-modal-t">%2$s</h2></div><button type="button" class="jd-est-modal__close" aria-label="%3$s"><span aria-hidden="true">&times;</span></button></div>%4$s</dialog>',
+		esc_html__( 'Cost estimator', 'jawad' ),
+		esc_html__( 'What will it cost?', 'jawad' ),
+		esc_attr__( 'Close estimator', 'jawad' ),
+		$est // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	);
+}
