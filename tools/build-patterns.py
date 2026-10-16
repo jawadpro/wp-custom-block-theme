@@ -122,7 +122,14 @@ princ = [('Replies inside 24 hours', "Usually much faster. If I'm away, you know
          ('Everything is yours', 'Hosting, domain, logins and files sit in your accounts, not mine.'),
          ('Honest scope', "If a job isn't a fit for me, I'll say so on the first call and point you elsewhere."),
          ('30 days of free fixes', 'Anything I built that breaks after launch, I fix at no charge.')]
-tools = ['WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types', 'PHP', 'JavaScript', 'Figma', 'WP Rocket', 'Rank Math', 'Cloudflare', 'Zapier', 'n8n', 'OpenAI API']
+tools = [
+    'WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types', 'Gutenberg blocks', 'Shopify',
+    'PHP', 'Laravel', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Node.js', 'HTML5', 'CSS3', 'Sass', 'Tailwind CSS', 'Vite',
+    'REST APIs', 'GraphQL', 'MySQL', 'Redis', 'Git', 'GitHub',
+    'Docker', 'Kubernetes', 'GitHub Actions', 'CI/CD', 'Linux', 'Bash', 'Nginx', 'Apache', 'LiteSpeed', 'WP-CLI', 'cPanel',
+    'AWS', 'Google Cloud', 'DigitalOcean', 'Terraform', 'Cloudflare',
+    'Figma', 'WP Rocket', 'Rank Math', 'Zapier', 'n8n', 'OpenAI API',
+]
 
 P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
     pattern_ref('jawad/hero'), pattern_ref('jawad/proof'), pattern_ref('jawad/statement'), block('jd/marquee'),

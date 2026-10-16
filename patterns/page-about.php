@@ -133,11 +133,151 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
+<p>Gutenberg blocks</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Shopify</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>PHP</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
+<p>Laravel</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>JavaScript</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>TypeScript</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>React</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Next.js</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Vue.js</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Node.js</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>HTML5</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>CSS3</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Sass</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Tailwind CSS</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Vite</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>REST APIs</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>GraphQL</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>MySQL</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Redis</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Git</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>GitHub</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Docker</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Kubernetes</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>GitHub Actions</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>CI/CD</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Linux</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Bash</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Nginx</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Apache</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>LiteSpeed</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>WP-CLI</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>cPanel</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>AWS</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Google Cloud</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>DigitalOcean</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Terraform</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Cloudflare</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -150,10 +290,6 @@
 
 <!-- wp:paragraph -->
 <p>Rank Math</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>Cloudflare</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
