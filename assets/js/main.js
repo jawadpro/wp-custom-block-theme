@@ -929,14 +929,27 @@
 			}
 		} );
 		d.addEventListener( 'click', function ( e ) {
-			var a = e.target.closest ? e.target.closest( '[data-est]' ) : null;
+			var a = e.target.closest ? e.target.closest( '[data-est], a[href*="/estimate"]' ) : null;
 			if ( ! a ) {
 				return;
 			}
+			var type = a.getAttribute( 'data-est' );
+			if ( ! type && a.href ) {
+				var url;
+				try {
+					url = new URL( a.href, location.href );
+				} catch ( err ) {
+					return;
+				}
+				if ( url.origin !== location.origin || ! /^\/estimate\/?$/.test( url.pathname ) ) {
+					return;
+				}
+				type = url.searchParams.get( 'type' );
+			}
 			e.preventDefault();
 			opener = a;
-			if ( inner && inner.jdSetType ) {
-				inner.jdSetType( a.getAttribute( 'data-est' ) );
+			if ( type && inner && inner.jdSetType ) {
+				inner.jdSetType( type );
 			}
 			if ( lenis ) {
 				lenis.stop();

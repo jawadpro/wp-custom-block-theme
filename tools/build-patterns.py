@@ -138,7 +138,7 @@ tools = [
 P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
     pattern_ref('jawad/hero'), pattern_ref('jawad/proof'), pattern_ref('jawad/statement'), block('jd/marquee'),
     pattern_ref('jawad/services-stack'), pattern_ref('jawad/work-track'), pattern_ref('jawad/process'),
-    pattern_ref('jawad/testimonials'), pattern_ref('jawad/pricing'), pattern_ref('jawad/estimator'), pattern_ref('jawad/faq-home'), pattern_ref('jawad/cta')))
+    pattern_ref('jawad/testimonials'), pattern_ref('jawad/pricing'), pattern_ref('jawad/faq-home'), pattern_ref('jawad/cta')))
 
 P['page-about'] = ('About page', 'jawad-pages', 'About page with portrait, live clocks, principles and toolkit.', J(
     group(group(J(

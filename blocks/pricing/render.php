@@ -68,7 +68,3 @@ printf(
 	$jd_out // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 );
 
-// One estimator popup per page, opened by the "Estimate my exact cost" links. Without JavaScript the links go to the estimator page.
-if ( 'project' === $jd_group ) {
-	jd_estimator_modal();
-}

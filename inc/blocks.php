@@ -210,3 +210,12 @@ function jd_estimator_modal() {
 		$est // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	);
 }
+
+// The estimator popup sits at the end of every page so any "Estimate" link can open it.
+// Its own page keeps the full estimator instead, and without JavaScript links go there.
+add_action( 'wp_footer', function () {
+	if ( is_admin() || is_page( 'estimate' ) ) {
+		return;
+	}
+	jd_estimator_modal();
+} );
