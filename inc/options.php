@@ -22,7 +22,7 @@ function jd_option_fields() {
 				'job_title'         => array( __( 'Role', 'jawad' ), 'text', 'WordPress Developer', '' ),
 				'availability_on'   => array( __( 'Show availability badge', 'jawad' ), 'checkbox', 1, '' ),
 				'availability_text' => array( __( 'Availability text', 'jawad' ), 'text', 'Taking 2 new projects this month', __( 'Keep it true and update it monthly.', 'jawad' ) ),
-				'badge_2'           => array( __( 'Hero badge 2', 'jawad' ), 'text', 'Top Rated on Upwork', __( 'Leave empty to hide.', 'jawad' ) ),
+				'badge_2'           => array( __( 'Hero badge 2', 'jawad' ), 'text', 'Fixed quotes in 24 hours', __( 'Leave empty to hide.', 'jawad' ) ),
 				'badge_3'           => array( __( 'Hero badge 3', 'jawad' ), 'text', 'Fixed-price quotes', __( 'Leave empty to hide.', 'jawad' ) ),
 				'footer_blurb'      => array( __( 'Footer description', 'jawad' ), 'textarea', 'WordPress developer for startups, growing businesses and established brands. Fast sites, clear offers, and replies inside your working day.', '' ),
 			),

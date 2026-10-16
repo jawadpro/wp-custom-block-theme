@@ -21,7 +21,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">Paste the job post you shared on Upwork, Toptal or Freelancer, or describe it in a few lines. You get a written fixed price, timeline and plan within 24 hours.</p>
+<p class="jd-lead">Share your brief, a job post, or a few lines about what you need. You get a written fixed price, timeline and plan within 24 hours.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"is-large"} -->

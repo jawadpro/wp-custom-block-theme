@@ -59,7 +59,7 @@ P['hero'] = ('Home hero', 'jawad-sections', 'Rounded hero screen with headline, 
     h('WordPress work,<br><strong>done right</strong><br>the first time.', 1, 'jd-hero__title jd-split'),
     group(J(
         group(J(
-            p('Hiring from Upwork, Toptal or Freelancer? Skip the gamble. You get a senior developer with 12+ years in WordPress and WooCommerce, a written fixed price within 24 hours, daily updates in your time zone, and 30 days of free fixes after launch.', 'jd-lead'),
+            p('Skip the gamble. You get a senior developer with 12+ years in WordPress and WooCommerce, a written fixed price within 24 hours, daily updates in your time zone, and 30 days of free fixes after launch.', 'jd-lead'),
             buttons([button('Get my fixed quote', url('/contact/'), 'jd-mag'), button('Estimate my cost', url('/estimate/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
         block('jd/offer')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
 
@@ -92,13 +92,13 @@ P['testimonials'] = ('Testimonials', 'jawad-sections', 'Rotating client quotes.'
     block('jd/testimonials')), 'jd-section is-tight-top jd-wrap', 'section'))
 
 P['pricing'] = ('Pricing', 'jawad-sections', 'Project packages from the Pricing post type.', group(J(
-    group(J(h('Prices up front', 2, 'jd-section__title'), p('Fixed quotes, milestone payments, revisions until the design is right, and Upwork escrow if you prefer it.', 'jd-muted')), 'jd-section__head'),
+    group(J(h('Prices up front', 2, 'jd-section__title'), p('Fixed quotes, milestone payments, and revisions until the design is right.', 'jd-muted')), 'jd-section__head'),
     block('jd/pricing', {'group': 'project'})), 'jd-section is-tight-top jd-wrap', 'section', 'pricing'))
 
 P['cta'] = ('Big call to action', 'jawad-sections', 'Full-width cobalt panel with the free audit offer.', group(group(J(
     p('Free quote · Reply within 24 hours', 'jd-label'),
     h('Ready to hire?<br>Start today.', 2, 'jd-cta__title'),
-    p('Paste the job post you shared on Upwork, Toptal or Freelancer, or describe it in a few lines. You get a written fixed price, timeline and plan within 24 hours.', 'jd-lead'),
+    p('Share your brief, a job post, or a few lines about what you need. You get a written fixed price, timeline and plan within 24 hours.', 'jd-lead'),
     buttons([button('Get my fixed quote', url('/contact/'), 'jd-mag'), button('Estimate my cost', url('/estimate/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
 
 P['estimator'] = ('Cost estimator', 'jawad-sections', 'Interactive project cost estimator that hands the estimate to the quote form.', group(J(
@@ -107,7 +107,7 @@ P['estimator'] = ('Cost estimator', 'jawad-sections', 'Interactive project cost 
 
 pay = [('Fixed quote', 'Written scope and price before any work starts. No hourly surprises.'),
        ('Milestones', 'Usually 40% to start, 40% at design approval, 20% at launch.'),
-       ('Safe payment', 'Stripe invoice, or Upwork escrow if you want the extra protection.')]
+       ('Safe payment', 'Pay by card through a secure Stripe invoice, or by bank transfer.')]
 P['pay'] = ('Payment terms', 'jawad-sections', 'How paying works, three columns.', group(J(
     p('How paying works', 'jd-label'),
     group(J(*[group(J(h(t, 3), p(d))) for t, d in pay]), 'jd-pay')), 'jd-section is-tight-top jd-wrap', 'section'))

@@ -22,7 +22,7 @@
 <!-- wp:group {"className":"jd-hero__row"} -->
 <div class="wp-block-group jd-hero__row"><!-- wp:group {"className":"jd-hero__main"} -->
 <div class="wp-block-group jd-hero__main"><!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">Hiring from Upwork, Toptal or Freelancer? Skip the gamble. You get a senior developer with 12+ years in WordPress and WooCommerce, a written fixed price within 24 hours, daily updates in your time zone, and 30 days of free fixes after launch.</p>
+<p class="jd-lead">Skip the gamble. You get a senior developer with 12+ years in WordPress and WooCommerce, a written fixed price within 24 hours, daily updates in your time zone, and 30 days of free fixes after launch.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"is-large"} -->

@@ -42,7 +42,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Stripe invoice, or Upwork escrow if you want the extra protection.</p>
+<p>Pay by card through a secure Stripe invoice, or by bank transfer.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

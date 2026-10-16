@@ -17,7 +17,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->
-<p class="jd-muted">Fixed quotes, milestone payments, revisions until the design is right, and Upwork escrow if you prefer it.</p>
+<p class="jd-muted">Fixed quotes, milestone payments, and revisions until the design is right.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
