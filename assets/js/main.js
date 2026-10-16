@@ -768,6 +768,155 @@
 		} );
 	} );
 
+	/* Cost estimator -------------------------------------------------------- */
+	safe( 'estimator', function () {
+		$$( '.jd-est' ).forEach( function ( est ) {
+			var c;
+			try {
+				c = JSON.parse( est.getAttribute( 'data-config' ) );
+			} catch ( e ) {
+				return;
+			}
+			var form = $( '.jd-est__form', est );
+			var cur = est.getAttribute( 'data-currency' ) || '$';
+			var quote = est.getAttribute( 'data-quote' );
+			var priceEl = $( '.jd-est__price', est );
+			var timeEl = $( '.jd-est__time', est );
+			var careEl = $( '.jd-est__care', est );
+			var list = $( '.jd-est__list', est );
+			var cta = $( '.jd-est__cta', est );
+			var shown = { lo: 0, hi: 0 };
+			var i18n = c.i18n || {};
+
+			function money( n ) {
+				return cur + Math.round( n ).toLocaleString( 'en-US' );
+			}
+			function fmt( str ) {
+				var args = Array.prototype.slice.call( arguments, 1 );
+				return str.replace( /%(\d)\$s|%s/g, function ( m, n ) {
+					return n ? args[ n - 1 ] : args[ 0 ];
+				} );
+			}
+			function val( name ) {
+				var el = form.querySelector( 'input[name="' + name + '"]:checked' );
+				return el ? el.value : '';
+			}
+			function paint( lo, hi ) {
+				priceEl.textContent = money( lo ) + '–' + Math.round( hi ).toLocaleString( 'en-US' );
+			}
+			function calc() {
+				var type = c.types[ val( 'type' ) ];
+				if ( ! type ) {
+					return;
+				}
+				var size = type.sized ? c.sizes[ val( 'size' ) ] : null;
+				var design = type.designed ? c.designs[ val( 'design' ) ] : null;
+				var pace = c.paces[ val( 'pace' ) ];
+				var care = c.care[ val( 'care' ) ];
+				var x = ( size ? size.x : 1 ) * ( design ? design.x : 1 );
+				var lo = type.min * x;
+				var hi = type.max * x;
+				var lines = [ type.label + ( size ? ', ' + size.label.toLowerCase() : '' ) ];
+				if ( design ) {
+					lines.push( design.label );
+				}
+				$$( 'input[name="extras[]"]:checked', form ).forEach( function ( box ) {
+					var ex = c.extras[ box.value ];
+					if ( ex ) {
+						lo += ex.min;
+						hi += ex.max;
+						lines.push( ex.label );
+					}
+				} );
+				if ( pace ) {
+					lo *= pace.x;
+					hi *= pace.x;
+					if ( pace.x > 1 ) {
+						lines.push( i18n.rush || 'Rush timeline' );
+					}
+				}
+				lo = Math.floor( lo / 50 ) * 50;
+				hi = Math.ceil( hi / 50 ) * 50;
+
+				var wx = ( size ? size.wx : 1 ) * ( design ? design.wx : 1 );
+				var w0 = type.weeks[ 0 ] * wx;
+				var w1 = type.weeks[ 1 ] * wx;
+				if ( pace && pace.x > 1 ) {
+					w0 *= 0.7;
+					w1 *= 0.7;
+				}
+				var time = w1 < 1.5
+					? fmt( i18n.days || 'About %1$s–%2$s days', Math.max( 2, Math.round( w0 * 5 ) ), Math.max( 3, Math.round( w1 * 5 ) ) )
+					: fmt( i18n.weeks || 'About %1$s–%2$s weeks', Math.max( 1, Math.round( w0 ) ), Math.max( 2, Math.round( w1 ) ) );
+				timeEl.textContent = time;
+
+				careEl.hidden = ! ( care && care.monthly );
+				if ( care && care.monthly ) {
+					careEl.textContent = fmt( i18n.care || 'Plus %s a month for care', money( care.monthly ) );
+					lines.push( care.label + ' (' + money( care.monthly ) + '/mo)' );
+				}
+				list.innerHTML = '';
+				lines.forEach( function ( l ) {
+					var li = d.createElement( 'li' );
+					li.textContent = l;
+					list.appendChild( li );
+				} );
+
+				$$( '[data-when]', form ).forEach( function ( fs ) {
+					fs.hidden = ! type[ fs.getAttribute( 'data-when' ) ];
+				} );
+
+				var summary = ( i18n.intro || 'Estimate from the website' ) + ': ' + lines.join( ', ' ) + '. ' + money( lo ) + '–' + Math.round( hi ).toLocaleString( 'en-US' ) + ', ' + time.toLowerCase() + '.';
+				var mid = ( lo + hi ) / 2;
+				var params = new URLSearchParams( { jd_type: type.form || '', jd_budget: mid < 1500 ? 0 : mid < 3500 ? 1 : mid < 6000 ? 2 : 3, jd_est: summary } );
+				cta.href = quote + ( quote.indexOf( '?' ) === -1 ? '?' : '&' ) + params.toString() + '#contact';
+
+				if ( motion ) {
+					G.to( shown, { lo: lo, hi: hi, duration: 0.6, ease: 'expo.out', overwrite: true, onUpdate: function () {
+						paint( shown.lo, shown.hi );
+					} } );
+					G.fromTo( priceEl, { scale: 1.06 }, { scale: 1, duration: 0.5, ease: 'back.out(3)', overwrite: 'auto' } );
+				} else {
+					shown.lo = lo;
+					shown.hi = hi;
+					paint( lo, hi );
+				}
+			}
+			est.classList.add( 'is-live' );
+			form.addEventListener( 'change', calc );
+			form.addEventListener( 'submit', function ( e ) {
+				e.preventDefault();
+			} );
+			calc();
+		} );
+	} );
+
+	/* Quote form: fill in what the estimator sent over ----------------------- */
+	safe( 'prefill', function () {
+		var q = new URLSearchParams( location.search );
+		if ( ! q.get( 'jd_est' ) ) {
+			return;
+		}
+		$$( 'form.jd-form' ).forEach( function ( form ) {
+			var pick = function ( name, value ) {
+				$$( 'input[name="' + name + '"]', form ).forEach( function ( r ) {
+					if ( r.value === value ) {
+						r.checked = true;
+					}
+				} );
+			};
+			pick( 'type', q.get( 'jd_type' ) );
+			var b = parseInt( q.get( 'jd_budget' ), 10 );
+			var budgets = $$( 'input[name="budget"]', form );
+			if ( budgets[ b ] ) {
+				budgets[ b ].checked = true;
+			}
+			if ( form.elements.details && ! form.elements.details.value ) {
+				form.elements.details.value = q.get( 'jd_est' ).slice( 0, 1000 ) + '\n\n';
+			}
+		} );
+	} );
+
 	/* Copy buttons ---------------------------------------------------------- */
 	d.addEventListener( 'click', function ( e ) {
 		var b = e.target.closest ? e.target.closest( '[data-copy]' ) : null;
@@ -943,7 +1092,7 @@
 			} );
 
 		// Cards land with a small tilt and a springy settle.
-		$$( '.jd-box, .jd-gcard, .jd-faq__item, .jd-faq-core .wp-block-details' )
+		$$( '.jd-box, .jd-gcard, .jd-faq__item, .jd-faq-core .wp-block-details, .jd-facts-row > div, .jd-case__cols > div, .jd-case__quote, .jd-case-aside' )
 			.filter( function ( el ) {
 				return ! el.closest( '.jd-plans, .jd-princ, .jd-pay, .jd-steps, .jd-reveal' );
 			} )

@@ -13,7 +13,7 @@
 <!-- wp:group {"tagName":"section","className":"jd-section jd-hwork"} -->
 <section class="wp-block-group jd-section jd-hwork"><!-- wp:group {"className":"jd-wrap jd-section__head"} -->
 <div class="wp-block-group jd-wrap jd-section__head"><!-- wp:heading {"className":"jd-section__title"} -->
-<h2 class="wp-block-heading jd-section__title">Recent<br>builds</h2>
+<h2 class="wp-block-heading jd-section__title">Proof,<br>not promises</h2>
 <!-- /wp:heading -->
 
 <!-- wp:buttons -->

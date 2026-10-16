@@ -12,10 +12,10 @@
 ?>
 <!-- wp:group {"tagName":"section","className":"jd-section jd-wrap jd-statement"} -->
 <section class="wp-block-group jd-section jd-wrap jd-statement"><!-- wp:paragraph {"className":"jd-label"} -->
-<p class="jd-label">The problem</p>
+<p class="jd-label">Why clients stay</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-statement__text jd-fill"} -->
-<p class="jd-statement__text jd-fill">Most business websites are slow, confusing, and quietly losing leads. I build sites that load in under two seconds, explain what you do at a glance, and make the <em>next step</em> obvious.</p>
+<p class="jd-statement__text jd-fill">Been ghosted, overcharged, or left with half-finished code? Here you get one senior developer, a fixed price in writing, progress you can see every day, and a site that loads in under two seconds. You always know the <em>next step</em>.</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->
