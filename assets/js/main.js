@@ -884,6 +884,64 @@
 		} );
 	} );
 
+	/* Playful extras: progress bar, floating doodles, springy cards ------------ */
+	safe( 'playful', function () {
+		if ( ! motion || ! cfg.playful ) {
+			return;
+		}
+		var bar = d.createElement( 'div' );
+		bar.className = 'jd-progress';
+		bar.setAttribute( 'aria-hidden', 'true' );
+		d.body.appendChild( bar );
+		G.to( bar, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: d.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 } } );
+
+		// Brand-colored shapes that pop in and drift past at their own speed. Decorative only.
+		var shapes = {
+			diamond: '<rect x="9" y="9" width="22" height="22" rx="4" transform="rotate(45 20 20)" fill="currentColor"/>',
+			ring: '<circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="5"/>',
+			plus: '<path d="M20 6v28M6 20h28" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>',
+			squiggle: '<path d="M3 24c5-10 9-10 12 0s7 10 11 0 8-10 11 0" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>',
+			arc: '<path d="M7 30a13 13 0 0 1 26 0" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>',
+			dots: '<g fill="currentColor"><circle cx="8" cy="8" r="3.5"/><circle cx="20" cy="8" r="3.5"/><circle cx="32" cy="8" r="3.5"/><circle cx="8" cy="20" r="3.5"/><circle cx="20" cy="20" r="3.5"/><circle cx="32" cy="20" r="3.5"/><circle cx="8" cy="32" r="3.5"/><circle cx="20" cy="32" r="3.5"/><circle cx="32" cy="32" r="3.5"/></g>',
+		};
+		var names = Object.keys( shapes );
+		var spots = [ [ 3, 12 ], [ 91, 6 ], [ 94, 64 ], [ 2, 72 ] ];
+		$$( '.jd-section' )
+			.filter( function ( sec ) {
+				return ! sec.classList.contains( 'jd-hwork' ) && ! sec.closest( '.jd-screen, .jd-cta' ) && sec.offsetHeight > 280;
+			} )
+			.forEach( function ( sec, i ) {
+				var box = d.createElement( 'div' );
+				box.className = 'jd-doodles';
+				box.setAttribute( 'aria-hidden', 'true' );
+				[ 0, 1 ].forEach( function ( k ) {
+					var name = names[ ( i * 2 + k ) % names.length ];
+					var spot = spots[ ( i + k * 2 ) % spots.length ];
+					var el = d.createElement( 'span' );
+					el.className = 'jd-doodle jd-doodle--' + name;
+					el.style.left = spot[ 0 ] + '%';
+					el.style.top = spot[ 1 ] + '%';
+					el.innerHTML = '<svg viewBox="0 0 40 40" focusable="false">' + shapes[ name ] + '</svg>';
+					box.appendChild( el );
+					var dir = k ? -1 : 1;
+					var drift = 50 + ( i % 3 ) * 30;
+					G.from( el.firstChild, { scale: 0, rotation: -120 * dir, duration: 1.2, ease: 'back.out(2.2)', scrollTrigger: { trigger: sec, start: 'top 75%' } } );
+					G.fromTo( el, { y: drift * dir }, { y: -drift * dir, rotation: 140 * dir, ease: 'none', scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: true } } );
+				} );
+				sec.classList.add( 'jd-has-doodles' );
+				sec.appendChild( box );
+			} );
+
+		// Cards land with a small tilt and a springy settle.
+		$$( '.jd-box, .jd-gcard, .jd-faq__item, .jd-faq-core .wp-block-details' )
+			.filter( function ( el ) {
+				return ! el.closest( '.jd-plans, .jd-princ, .jd-pay, .jd-steps, .jd-reveal' );
+			} )
+			.forEach( function ( el, i ) {
+				G.from( el, { y: 40, rotation: i % 2 ? 2.5 : -2.5, scale: 0.95, autoAlpha: 0, duration: 0.9, ease: 'back.out(1.7)', delay: ( i % 3 ) * 0.06, scrollTrigger: { trigger: el, start: 'top 92%' } } );
+			} );
+	} );
+
 	/* Recalculate pinned sections once fonts and images settle ---------------- */
 	if ( motion ) {
 		// Triggers are created section by section, so a reveal set up before a pin further up the
