@@ -14,7 +14,7 @@
 <section class="wp-block-group jd-wrap"><!-- wp:group {"className":"jd-proof"} -->
 <div class="wp-block-group jd-proof"><!-- wp:group -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"jd-stat__n"} -->
-<p class="jd-stat__n">10+</p>
+<p class="jd-stat__n">12+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->

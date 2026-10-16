@@ -63,7 +63,7 @@ P['hero'] = ('Home hero', 'jawad-sections', 'Rounded hero screen with headline, 
             buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
         block('jd/offer')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
 
-stats = [('10+', 'years building on WordPress'), ('500+', 'sites built, fixed or sped up'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
+stats = [('12+', 'years building on WordPress'), ('500+', 'sites built, fixed or sped up'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
 P['proof'] = ('Proof numbers', 'jawad-sections', 'Four large count-up numbers.', group(group(J(*[group(J(p(n, 'jd-stat__n'), p(t, 'jd-muted'))) for n, t in stats]), 'jd-proof'), 'jd-wrap', 'section'))
 
 P['statement'] = ('Problem statement', 'jawad-sections', 'Large statement that lights up word by word on scroll.', group(J(
@@ -139,7 +139,7 @@ P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
 P['page-about'] = ('About page', 'jawad-pages', 'About page with portrait, live clocks, principles and toolkit.', J(
     group(group(J(
         group(J(p('About', 'jd-label'), h('One developer.<br><em>No hand-offs.</em>', 1, 'jd-split'),
-                p("I'm Jawad Ilyas. I've built WordPress sites for more than ten years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
+                p("I'm Jawad Ilyas, a WordPress developer based in Lahore, Pakistan. I've built WordPress sites for more than 12 years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
         group(p('JI', 'jd-portrait__ini'), 'jd-portrait')), 'jd-about'), 'jd-phero jd-wrap', 'section'),
     group(block('jd/clocks'), 'jd-wrap', 'section'),
     group(J(p('What you can count on', 'jd-label'), group(J(*[group(J(h(t, 3), p(d))) for t, d in princ]), 'jd-princ')), 'jd-section jd-wrap', 'section'),
