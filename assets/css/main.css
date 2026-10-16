@@ -596,6 +596,7 @@ html:not(.jd-js) .jd-marquee__track, body:not(.jd-motion) .jd-marquee__track { a
 /* Blog */
 .jd-prose { max-width: 760px; margin-inline: auto; padding-left: var(--gutter); padding-right: var(--gutter-r); font-size: 18px; line-height: 1.7; color: #DCE1EF; }
 .jd-prose > * + * { margin-top: 1.4em; }
+.single-post .jd-prose { max-width: 960px; }
 .jd-prose h2, .jd-prose h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.02em; color: var(--fg); margin-top: 2em; }
 .jd-prose h2 { font-size: clamp(28px, 3vw, 40px); }
 .jd-prose h3 { font-size: 26px; }
