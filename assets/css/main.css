@@ -682,6 +682,7 @@ html.lenis, html.lenis body { height: auto; }
 .jd-main .jd-post-nav a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
 .jd-main .jd-post-nav .wp-block-post-navigation-link:hover { border-color: var(--mint); background: var(--ink-3); transform: translateY(-3px); }
 .jd-main .jd-post-nav .wp-block-post-navigation-link:focus-within { border-color: var(--mint); }
+.jd-main .jd-post-nav .wp-block-post-navigation-link:not(:has(a)) { display: none; }
 @media (max-width: 700px) {
 	.jd-main .jd-post-nav { grid-template-columns: 1fr; }
 	.jd-main .jd-post-nav .post-navigation-link-next { grid-column: auto; }
