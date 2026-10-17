@@ -10,6 +10,16 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'admin_post_nopriv_jd_contact', 'jd_handle_contact' );
 add_action( 'admin_post_jd_contact', 'jd_handle_contact' );
+add_action( 'admin_post_nopriv_jd_nonce', 'jd_fresh_form_nonce' );
+add_action( 'admin_post_jd_nonce', 'jd_fresh_form_nonce' );
+
+/**
+ * Return a fresh form nonce, so pages served from the page cache can still submit.
+ */
+function jd_fresh_form_nonce() {
+	nocache_headers();
+	wp_send_json_success( array( 'nonce' => wp_create_nonce( 'jd_contact' ) ) );
+}
 
 /**
  * Handle a contact submission.

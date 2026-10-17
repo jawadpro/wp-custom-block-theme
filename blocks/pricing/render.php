@@ -86,7 +86,7 @@ if ( $jd_promo ) {
 		/* translators: %s: discount percent. */
 		esc_html( sprintf( __( '%s%% off your first project', 'jawad' ), $jd_pct ) ),
 		esc_html( jd_opt( 'promo_text' ) ),
-		$jd_code ? sprintf( '<button type="button" class="jd-deal__code" data-copy="%1$s" data-done="%3$s"><span>%1$s</span><small>%2$s</small></button>', esc_attr( $jd_code ), esc_html__( 'Tap to copy', 'jawad' ), esc_attr__( 'Copied', 'jawad' ) ) : ''
+		$jd_code ? sprintf( '<button type="button" class="jd-deal__code" data-code="%1$s" data-done="%3$s"><span>%1$s</span><small>%2$s</small></button>', esc_attr( $jd_code ), esc_html__( 'Tap to copy', 'jawad' ), esc_attr__( 'Copied', 'jawad' ) ) : ''
 	);
 }
 

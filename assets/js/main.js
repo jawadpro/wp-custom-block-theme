@@ -776,13 +776,33 @@
 				}
 				next.disabled = true;
 				next.textContent = t.sending || 'Sending…';
-				fetch( form.action, { method: 'POST', body: new FormData( form ), headers: { Accept: 'application/json' }, credentials: 'same-origin' } )
+				// The hidden input named "action" shadows form.action, so read the attribute.
+				var url = form.getAttribute( 'action' ) || cfg.ajax;
+				var nonceEl = form.elements.jd_nonce;
+				// Cached pages can carry an expired nonce, so fetch a fresh one first.
+				fetch( url + ( url.indexOf( '?' ) === -1 ? '?' : '&' ) + 'action=jd_nonce', { cache: 'no-store', credentials: 'same-origin', headers: { Accept: 'application/json' } } )
+					.then( function ( r ) {
+						return r.json();
+					} )
+					.then( function ( res ) {
+						if ( res && res.success && res.data && res.data.nonce && nonceEl ) {
+							nonceEl.value = res.data.nonce;
+						}
+					}, function () {} )
+					.then( function () {
+						return fetch( url, { method: 'POST', body: new FormData( form ), headers: { Accept: 'application/json' }, credentials: 'same-origin' } );
+					} )
 					.then( function ( r ) {
 						return r.json().catch( function () {
-							return { success: false };
+							// Not JSON (a firewall page or a redirect): send it the normal way instead.
+							HTMLFormElement.prototype.submit.call( form );
+							return { pending: true };
 						} );
 					} )
 					.then( function ( res ) {
+						if ( res && res.pending ) {
+							return;
+						}
 						if ( res && res.success ) {
 							var done = d.createElement( 'div' );
 							done.className = 'jd-form jd-form--done';
@@ -815,7 +835,7 @@
 			var small = $( 'small', btn );
 			var label = small ? small.textContent : '';
 			btn.addEventListener( 'click', function () {
-				var code = btn.getAttribute( 'data-copy' ) || '';
+				var code = btn.getAttribute( 'data-code' ) || '';
 				var done = function () {
 					btn.classList.add( 'is-copied' );
 					if ( small ) {
