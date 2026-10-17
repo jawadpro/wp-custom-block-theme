@@ -81,6 +81,7 @@ $jd_first = array_key_first( $jd_cfg['types'] );
 		<p class="jd-est__price"><?php echo esc_html( $jd_from( $jd_cfg['types'][ $jd_first ] ) ); ?></p>
 		<p class="jd-est__time jd-muted"></p>
 		<p class="jd-est__care jd-muted" hidden></p>
+		<p class="jd-est__promo" hidden></p>
 		<ul class="jd-est__list jd-ticks"></ul>
 		<a class="jd-btn jd-btn--primary jd-mag jd-est__cta" href="<?php echo esc_url( $jd_quote ); ?>"><?php esc_html_e( 'Turn this into a fixed quote', 'jawad' ); ?></a>
 		<p class="jd-est__note jd-muted"><?php esc_html_e( 'A guide, not a bill. You get a written fixed price within 24 hours, and it never goes up once agreed.', 'jawad' ); ?></p>

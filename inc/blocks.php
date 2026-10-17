@@ -169,7 +169,10 @@ function jd_estimator_config() {
 			'grow'  => array( 'label' => __( 'Grow plan', 'jawad' ), 'monthly' => 149 ),
 			'store' => array( 'label' => __( 'Store plan', 'jawad' ), 'monthly' => 249 ),
 		),
+		'promo'   => jd_opt( 'promo_on' ) ? array( 'pct' => max( 0, min( 90, (int) jd_opt( 'promo_pct' ) ) ), 'code' => (string) jd_opt( 'promo_code' ) ) : null,
 		'i18n'    => array(
+			/* translators: 1: percent, 2: price range. */
+			'promo'  => __( 'First project? %1$s off: %2$s', 'jawad' ),
 			'weeks'  => __( 'About %1$s–%2$s weeks', 'jawad' ),
 			'days'   => __( 'About %1$s–%2$s days', 'jawad' ),
 			'care'   => __( 'Plus %s a month for care', 'jawad' ),

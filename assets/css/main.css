@@ -422,20 +422,93 @@ html:not(.jd-js) .jd-marquee__track, body:not(.jd-motion) .jd-marquee__track { a
 .jd-stars { color: var(--mint); letter-spacing: 2px; }
 
 /* Pricing */
-.jd-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; margin-top: 56px !important; }
+.jd-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; margin-top: 56px !important; }
 @media (min-width: 1000px) { .jd-plans--project { grid-template-columns: repeat(3, 1fr); } }
-.jd-plan { border-radius: var(--r-lg); border: 1px solid var(--line); padding: 36px; display: flex; flex-direction: column; gap: 16px; background: var(--ink-2); transition: translate .5s var(--ease), border-color .3s; }
+.jd-plan {
+	position: relative; isolation: isolate; border-radius: var(--r-lg); border: 1px solid var(--line); padding: 36px 32px 30px;
+	display: flex; flex-direction: column; gap: 16px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, 0) 42%), var(--ink-2);
+	transition: translate .5s var(--ease), border-color .3s, box-shadow .5s var(--ease);
+}
 .jd-plan > * { margin: 0; }
-.jd-plan:hover { translate: 0 -6px; border-color: #3A4570; }
-.jd-plan.is-hot { background: var(--cobalt); border-color: var(--cobalt); }
+.jd-plan::before { /* glow border that lights up on hover */
+	content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; z-index: -1; pointer-events: none;
+	background: linear-gradient(140deg, var(--mint), rgba(91, 116, 255, .9) 45%, transparent 75%);
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+	opacity: 0; transition: opacity .4s;
+}
+.jd-plan:hover { translate: 0 -8px; border-color: transparent; box-shadow: 0 24px 60px -24px rgba(61, 90, 254, .55); }
+.jd-plan:hover::before { opacity: 1; }
+.jd-plan.is-hot {
+	background: radial-gradient(120% 80% at 100% 0%, rgba(92, 242, 200, .22), transparent 55%), linear-gradient(160deg, #4F6BFF, var(--cobalt) 45%, #2A3FD0);
+	border-color: transparent; box-shadow: 0 30px 70px -28px rgba(61, 90, 254, .8);
+}
+.jd-plan.is-hot::before { opacity: 1; background: linear-gradient(140deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .1) 50%, rgba(92, 242, 200, .6)); }
 .jd-plan.is-hot .jd-label, .jd-plan.is-hot .jd-muted, .jd-plan.is-hot .jd-plan__amt small { color: #DDE3FF; }
-.jd-plan__name { display: flex; justify-content: space-between; gap: 12px; }
+.jd-plan__name { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.jd-plan__name > span + span { font-size: 11px; letter-spacing: .08em; padding: 5px 10px; border-radius: 99px; background: rgba(92, 242, 200, .14); color: var(--mint); }
+.jd-plan.is-hot .jd-plan__name > span + span { background: #fff; color: var(--cobalt); }
 .jd-plan__amt { font-family: var(--display); font-stretch: 62%; font-variation-settings: 'wdth' 62; font-weight: 850; font-size: 68px; line-height: .9; }
 .jd-plans--care .jd-plan__amt { font-size: 56px; }
 .jd-plan__amt small { font-size: 28px; color: var(--muted); }
-.jd-plan__list { gap: 8px; font-size: 16px; }
-.jd-plan__list li::before { content: "✓  "; color: var(--mint); }
+.jd-plan__desc { min-height: 3.2em; padding-bottom: 18px; border-bottom: 1px dashed var(--line); }
+.jd-plan.is-hot .jd-plan__desc { border-bottom-color: rgba(255, 255, 255, .3); }
+.jd-plan__list { gap: 10px; font-size: 16px; }
+.jd-plan__list li { position: relative; padding-left: 30px; }
+.jd-plan__list li::before {
+	content: "✓"; position: absolute; left: 0; top: .1em; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+	font-size: 11px; font-weight: 800; background: rgba(92, 242, 200, .14); color: var(--mint);
+}
+.jd-plan.is-hot .jd-plan__list li::before { background: rgba(255, 255, 255, .2); color: #fff; }
 .jd-plan .jd-btn { margin-top: auto; justify-content: center; }
+
+/* First-project discount: ticket above the plans, sticker on the featured plan */
+.jd-deal {
+	--notch: 14px; position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px;
+	margin-top: 48px !important; padding: 22px 28px; border-radius: 20px; overflow: hidden;
+	background: linear-gradient(100deg, rgba(92, 242, 200, .16), rgba(61, 90, 254, .2) 55%, rgba(140, 92, 255, .18)), var(--ink-2);
+	border: 1px solid rgba(92, 242, 200, .35);
+	-webkit-mask: radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+	mask: radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+}
+.jd-deal::after { /* light sweep */
+	content: ""; position: absolute; inset: 0; pointer-events: none;
+	background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .16) 50%, transparent 65%); transform: translateX(-100%);
+	animation: jd-sweep 5.5s var(--ease) 1s infinite;
+}
+@keyframes jd-sweep { 0%, 55% { transform: translateX(-100%); } 85%, 100% { transform: translateX(100%); } }
+.jd-deal__pct { display: flex; align-items: flex-start; gap: 4px; padding-right: 28px; border-right: 2px dashed rgba(255, 255, 255, .22); color: var(--mint); }
+.jd-deal__pct b { font-family: var(--display); font-stretch: 62%; font-variation-settings: 'wdth' 62; font-weight: 850; font-size: 84px; line-height: .8; }
+.jd-deal__pct span { font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1; text-transform: uppercase; padding-top: 4px; }
+.jd-deal__body > * { margin: 0; }
+.jd-deal__k { font-family: var(--mono, ui-monospace, monospace); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--mint); }
+.jd-deal__t { font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; line-height: 1.2; margin-top: 6px !important; }
+.jd-deal__s { font-size: 15px; color: var(--muted); margin-top: 6px !important; }
+.jd-deal__code {
+	position: relative; z-index: 1; display: grid; gap: 4px; justify-items: center; cursor: pointer; font: inherit; color: var(--ink, #0B0F1E);
+	padding: 14px 22px; border: 2px dashed rgba(11, 15, 30, .35); border-radius: 14px; background: var(--mint);
+	transition: transform .3s var(--ease), background .3s;
+}
+.jd-deal__code span { font-family: var(--mono, ui-monospace, monospace); font-weight: 800; font-size: 20px; letter-spacing: .12em; }
+.jd-deal__code small { font-size: 12px; font-weight: 600; opacity: .75; }
+.jd-deal__code:hover { transform: rotate(-2deg) scale(1.04); }
+.jd-deal__code.is-copied { background: #fff; }
+@media (max-width: 760px) {
+	.jd-deal { grid-template-columns: 1fr; gap: 16px; padding: 24px 28px; text-align: center; justify-items: center; }
+	.jd-deal__pct { padding: 0 0 16px; border-right: 0; border-bottom: 2px dashed rgba(255, 255, 255, .22); }
+}
+.jd-plans--project { margin-top: 32px !important; }
+.jd-sticker {
+	position: absolute; top: -34px; right: -18px; width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; z-index: 2;
+	background: var(--mint); color: var(--ink, #0B0F1E); box-shadow: 0 12px 30px -8px rgba(92, 242, 200, .55); rotate: 12deg;
+}
+.jd-sticker svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: jd-spin 14s linear infinite; }
+.jd-sticker text { font-size: 9.6px; font-weight: 800; letter-spacing: .14em; fill: currentColor; font-family: var(--mono, ui-monospace, monospace); }
+.jd-sticker b { font-family: var(--display); font-stretch: 62%; font-variation-settings: 'wdth' 62; font-weight: 850; font-size: 28px; line-height: 1; }
+@keyframes jd-spin { to { transform: rotate(360deg); } }
+.jd-plan:has(.jd-sticker) .jd-plan__name { padding-right: 76px; }
+@media (max-width: 700px) { .jd-sticker { right: 10px; top: -30px; width: 88px; height: 88px; } }
+.jd-est__promo { margin: 0; padding: 10px 14px; border-radius: 12px; font-size: 15px; font-weight: 600; color: var(--mint); background: rgba(92, 242, 200, .1); border: 1px dashed rgba(92, 242, 200, .4); }
 
 /* Big CTA */
 .jd-cta { margin-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)); border-radius: var(--r-lg); background: var(--cobalt); overflow: hidden; position: relative; color: #fff; }

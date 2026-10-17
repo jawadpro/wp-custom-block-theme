@@ -809,6 +809,34 @@
 	} );
 
 	/* Cost estimator -------------------------------------------------------- */
+	/* Discount code copy button ---------------------------------------- */
+	safe( 'deal', function () {
+		$$( '.jd-deal__code' ).forEach( function ( btn ) {
+			var small = $( 'small', btn );
+			var label = small ? small.textContent : '';
+			btn.addEventListener( 'click', function () {
+				var code = btn.getAttribute( 'data-copy' ) || '';
+				var done = function () {
+					btn.classList.add( 'is-copied' );
+					if ( small ) {
+						small.textContent = btn.getAttribute( 'data-done' ) || 'Copied';
+					}
+					setTimeout( function () {
+						btn.classList.remove( 'is-copied' );
+						if ( small ) {
+							small.textContent = label;
+						}
+					}, 1800 );
+				};
+				if ( navigator.clipboard && navigator.clipboard.writeText ) {
+					navigator.clipboard.writeText( code ).then( done, done );
+				} else {
+					done();
+				}
+			} );
+		} );
+	} );
+
 	safe( 'estimator', function () {
 		$$( '.jd-est' ).forEach( function ( est ) {
 			var c;
@@ -823,6 +851,7 @@
 			var priceEl = $( '.jd-est__price', est );
 			var timeEl = $( '.jd-est__time', est );
 			var careEl = $( '.jd-est__care', est );
+			var promoEl = $( '.jd-est__promo', est );
 			var list = $( '.jd-est__list', est );
 			var cta = $( '.jd-est__cta', est );
 			var shown = { lo: 0, hi: 0 };
@@ -907,6 +936,15 @@
 				} );
 
 				var summary = ( i18n.intro || 'Estimate from the website' ) + ': ' + lines.join( ', ' ) + '. ' + money( lo ) + '–' + Math.round( hi ).toLocaleString( 'en-US' ) + ', ' + time.toLowerCase() + '.';
+				var promo = c.promo && c.promo.pct ? c.promo : null;
+				if ( promoEl ) {
+					promoEl.hidden = ! promo;
+					if ( promo ) {
+						var k = 1 - promo.pct / 100;
+						promoEl.textContent = fmt( i18n.promo || 'First project? %1$s off: %2$s', promo.pct + '%', money( lo * k ) + '–' + Math.round( hi * k ).toLocaleString( 'en-US' ) );
+						summary += ' ' + promo.pct + '% first project discount' + ( promo.code ? ' (code ' + promo.code + ')' : '' ) + '.';
+					}
+				}
 				var mid = ( lo + hi ) / 2;
 				var params = new URLSearchParams( { jd_type: type.form || '', jd_budget: mid < 1500 ? 0 : mid < 3500 ? 1 : mid < 6000 ? 2 : mid < 12000 ? 3 : 4, jd_est: summary } );
 				cta.href = quote + ( quote.indexOf( '?' ) === -1 ? '?' : '&' ) + params.toString() + '#contact';
