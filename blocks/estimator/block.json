@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jd/estimator",
+	"title": "Cost estimator",
+	"category": "jawad",
+	"icon": "calculator",
+	"description": "Interactive project cost estimator. The result links to the quote form with the estimate filled in. Prices can be changed with the jd_estimator_config filter.",
+	"textdomain": "jawad",
+	"attributes": {
+		"currency": { "type": "string", "default": "$" }
+	},
+	"supports": { "html": false, "anchor": true, "className": true, "reusable": false },
+	"editorScript": "jd-blocks-editor",
+	"render": "file:./render.php"
+}

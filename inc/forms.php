@@ -10,6 +10,87 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'admin_post_nopriv_jd_contact', 'jd_handle_contact' );
 add_action( 'admin_post_jd_contact', 'jd_handle_contact' );
+add_action( 'admin_post_nopriv_jd_nonce', 'jd_fresh_form_nonce' );
+add_action( 'admin_post_jd_nonce', 'jd_fresh_form_nonce' );
+
+/**
+ * Signed render time for the form, so bots can't fake or drop the timing check.
+ */
+function jd_form_stamp() {
+	$t = (string) time();
+	return $t . '.' . substr( wp_hash( 'jd_form|' . $t ), 0, 12 );
+}
+
+/**
+ * Does this submission look automated? Checked before anything is saved or sent.
+ *
+ * @param string $details Message text.
+ * @param string $name    Sender name.
+ */
+function jd_looks_like_bot( $details, $name ) {
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce is verified by the caller.
+	$hp    = isset( $_POST['jd_hp'] ) ? (string) wp_unslash( $_POST['jd_hp'] ) : '';
+	$hp2   = isset( $_POST['jd_hp2'] ) ? (string) wp_unslash( $_POST['jd_hp2'] ) : '';
+	$stamp = isset( $_POST['jd_ts'] ) ? sanitize_text_field( wp_unslash( $_POST['jd_ts'] ) ) : '';
+	$js    = isset( $_POST['jd_js'] ) ? sanitize_text_field( wp_unslash( $_POST['jd_js'] ) ) : '';
+	// phpcs:enable
+	if ( '' !== $hp || '' !== $hp2 ) {
+		return true;
+	}
+	// The timestamp must be ours and at least 4 seconds old: people need time to fill three steps.
+	$parts = explode( '.', $stamp );
+	if ( 2 !== count( $parts ) || ! hash_equals( substr( wp_hash( 'jd_form|' . $parts[0] ), 0, 12 ), $parts[1] ) || time() - (int) $parts[0] < 4 ) {
+		return true;
+	}
+	// main.js fills this after a real keypress, tap or click inside the form.
+	if ( strrev( $stamp ) !== $js ) {
+		return true;
+	}
+	// Link spam: real briefs rarely carry more than a couple of links, and names never do.
+	if ( preg_match_all( '#https?://|www\.#i', $details ) > 3 || preg_match( '#https?://|www\.|<a\s#i', $name ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Verify a Cloudflare Turnstile token when both keys are set. Returns true when the check passes or is off.
+ */
+function jd_turnstile_ok() {
+	$secret = (string) jd_opt( 'turnstile_secret' );
+	if ( '' === $secret || '' === (string) jd_opt( 'turnstile_site' ) ) {
+		return true;
+	}
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce is verified by the caller.
+	$token = isset( $_POST['cf-turnstile-response'] ) ? sanitize_text_field( wp_unslash( $_POST['cf-turnstile-response'] ) ) : '';
+	if ( '' === $token ) {
+		return false;
+	}
+	$res = wp_remote_post(
+		'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+		array(
+			'timeout' => 8,
+			'body'    => array(
+				'secret'   => $secret,
+				'response' => $token,
+				'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
+			),
+		)
+	);
+	if ( is_wp_error( $res ) ) {
+		return true; // Don't lose a real lead because Cloudflare was unreachable.
+	}
+	$body = json_decode( wp_remote_retrieve_body( $res ), true );
+	return ! empty( $body['success'] );
+}
+
+/**
+ * Return a fresh form nonce, so pages served from the page cache can still submit.
+ */
+function jd_fresh_form_nonce() {
+	nocache_headers();
+	wp_send_json_success( array( 'nonce' => wp_create_nonce( 'jd_contact' ) ) );
+}
 
 /**
  * Handle a contact submission.
@@ -31,16 +112,6 @@ function jd_handle_contact() {
 		$fail( __( 'This form expired. Reload the page and try again.', 'jawad' ), 403 );
 	}
 
-	// Spam traps: hidden field must stay empty and humans need a few seconds.
-	$hp = isset( $_POST['jd_hp'] ) ? sanitize_text_field( wp_unslash( $_POST['jd_hp'] ) ) : '';
-	$ts = isset( $_POST['jd_ts'] ) ? (int) $_POST['jd_ts'] : 0;
-	if ( '' !== $hp || ( $ts && time() - $ts < 3 ) ) {
-		if ( $is_ajax ) {
-			wp_send_json_success( array( 'message' => jd_opt( 'form_success' ) ) );
-		}
-		wp_safe_redirect( add_query_arg( 'jd_sent', 'ok', $ref ) . '#contact' );
-		exit;
-	}
 
 	// Simple rate limit: 5 submissions per hour per IP.
 	$ip_raw = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
@@ -60,6 +131,18 @@ function jd_handle_contact() {
 
 	if ( '' === $name || ! is_email( $email ) ) {
 		$fail( __( 'Please add your name and a valid email.', 'jawad' ), 422 );
+	}
+
+	// Spam traps. Bots get a normal-looking success so they learn nothing, and nothing is saved or sent.
+	if ( jd_looks_like_bot( $details, $name ) ) {
+		if ( $is_ajax ) {
+			wp_send_json_success( array( 'message' => jd_opt( 'form_success' ) ) );
+		}
+		wp_safe_redirect( add_query_arg( 'jd_sent', 'ok', $ref ) . '#contact' );
+		exit;
+	}
+	if ( ! jd_turnstile_ok() ) {
+		$fail( __( 'Please complete the human check and send again.', 'jawad' ), 403 );
 	}
 
 	set_transient( $ip_key, $hits + 1, HOUR_IN_SECONDS );

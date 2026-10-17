@@ -53,6 +53,7 @@ add_action( 'wp_enqueue_scripts', function () {
 			'smooth'   => (bool) jd_opt( 'smooth_scroll' ),
 			'cursor'   => (bool) jd_opt( 'custom_cursor' ),
 			'field'    => (bool) jd_opt( 'hero_field' ),
+			'playful'  => (bool) jd_opt( 'playful_extras' ),
 			'ajax'     => admin_url( 'admin-post.php' ),
 			'i18n'     => array(
 				'send'     => __( 'Send request', 'jawad' ),

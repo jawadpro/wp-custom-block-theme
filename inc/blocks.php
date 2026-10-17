@@ -119,3 +119,117 @@ function jd_project_card( $post, $class = 'jd-pcard' ) {
 		$tag ? '<span class="jd-tag">' . esc_html( $tag ) . '</span>' : ''
 	);
 }
+
+/**
+ * Prices and options for the cost estimator block. Ranges are in whole currency units.
+ * Change them with add_filter( 'jd_estimator_config', ... ).
+ */
+function jd_estimator_config() {
+	$cfg = array(
+		'types'   => array(
+			'landing'  => array( 'label' => __( 'Landing page', 'jawad' ), 'min' => 500, 'max' => 1200, 'weeks' => array( 1, 2 ), 'sized' => false, 'designed' => true, 'form' => 'Landing page' ),
+			'business' => array( 'label' => __( 'Business website', 'jawad' ), 'min' => 1500, 'max' => 3000, 'weeks' => array( 2, 4 ), 'sized' => true, 'designed' => true, 'form' => 'New website' ),
+			'store'    => array( 'label' => __( 'Shopify or WooCommerce store', 'jawad' ), 'min' => 3000, 'max' => 6000, 'weeks' => array( 3, 6 ), 'sized' => true, 'designed' => true, 'form' => 'Online store' ),
+			'webflow'  => array( 'label' => __( 'Webflow website', 'jawad' ), 'min' => 1200, 'max' => 3000, 'weeks' => array( 2, 4 ), 'sized' => true, 'designed' => true, 'form' => 'New website' ),
+			'webapp'   => array( 'label' => __( 'Custom web app', 'jawad' ), 'min' => 5000, 'max' => 12000, 'weeks' => array( 4, 10 ), 'sized' => false, 'designed' => true, 'form' => 'Web app' ),
+			'ai'       => array( 'label' => __( 'AI feature or automation', 'jawad' ), 'min' => 800, 'max' => 3000, 'weeks' => array( 1, 3 ), 'sized' => false, 'designed' => false, 'form' => 'AI or automation' ),
+			'redesign' => array( 'label' => __( 'Redesign or rebuild', 'jawad' ), 'min' => 1200, 'max' => 2800, 'weeks' => array( 2, 4 ), 'sized' => true, 'designed' => true, 'form' => 'New website' ),
+			'fix'      => array( 'label' => __( 'Speed, bugs or fixes', 'jawad' ), 'min' => 150, 'max' => 600, 'weeks' => array( 0.5, 1 ), 'sized' => false, 'designed' => false, 'form' => 'Speed or fix' ),
+			'custom'   => array( 'label' => __( 'Custom feature or integration', 'jawad' ), 'min' => 800, 'max' => 2500, 'weeks' => array( 1, 4 ), 'sized' => false, 'designed' => false, 'form' => 'Something else' ),
+		),
+		'sizes'   => array(
+			'small'  => array( 'label' => __( 'Small: up to 5 pages', 'jawad' ), 'x' => 1, 'wx' => 1 ),
+			'medium' => array( 'label' => __( 'Medium: 6 to 12 pages', 'jawad' ), 'x' => 1.35, 'wx' => 1.25 ),
+			'large'  => array( 'label' => __( 'Large: 13+ pages or a big catalog', 'jawad' ), 'x' => 1.8, 'wx' => 1.6 ),
+		),
+		'designs' => array(
+			'template' => array( 'label' => __( 'Polished template', 'jawad' ), 'x' => 0.85, 'wx' => 0.85 ),
+			'figma'    => array( 'label' => __( 'I have a design', 'jawad' ), 'x' => 1, 'wx' => 1 ),
+			'custom'   => array( 'label' => __( 'Design it for me', 'jawad' ), 'x' => 1.25, 'wx' => 1.25 ),
+		),
+		'extras'  => array(
+			'booking'  => array( 'label' => __( 'Bookings or appointments', 'jawad' ), 'min' => 300, 'max' => 600 ),
+			'multi'    => array( 'label' => __( 'More than one language', 'jawad' ), 'min' => 400, 'max' => 900 ),
+			'members'  => array( 'label' => __( 'Memberships or subscriptions', 'jawad' ), 'min' => 600, 'max' => 1500 ),
+			'crm'      => array( 'label' => __( 'CRM or Zapier hookups', 'jawad' ), 'min' => 250, 'max' => 600 ),
+			'chatbot'  => array( 'label' => __( 'AI chatbot or assistant', 'jawad' ), 'min' => 600, 'max' => 1500 ),
+			'api'      => array( 'label' => __( 'Third-party API integration', 'jawad' ), 'min' => 300, 'max' => 900 ),
+			'seo'      => array( 'label' => __( 'SEO setup and schema', 'jawad' ), 'min' => 200, 'max' => 400 ),
+			'migrate'  => array( 'label' => __( 'Move content from old site', 'jawad' ), 'min' => 200, 'max' => 600 ),
+			'copy'     => array( 'label' => __( 'Copywriting', 'jawad' ), 'min' => 300, 'max' => 800 ),
+		),
+		'paces'   => array(
+			'flexible' => array( 'label' => __( "I'm flexible", 'jawad' ), 'x' => 0.95 ),
+			'standard' => array( 'label' => __( 'Within a month or so', 'jawad' ), 'x' => 1 ),
+			'rush'     => array( 'label' => __( 'Rush, under 2 weeks', 'jawad' ), 'x' => 1.25 ),
+		),
+		'care'    => array(
+			'none'  => array( 'label' => __( 'Not now', 'jawad' ), 'monthly' => 0 ),
+			'keep'  => array( 'label' => __( 'Keep plan', 'jawad' ), 'monthly' => 79 ),
+			'grow'  => array( 'label' => __( 'Grow plan', 'jawad' ), 'monthly' => 149 ),
+			'store' => array( 'label' => __( 'Store plan', 'jawad' ), 'monthly' => 249 ),
+		),
+		'i18n'    => array(
+			'weeks'  => __( 'About %1$s–%2$s weeks', 'jawad' ),
+			'days'   => __( 'About %1$s–%2$s days', 'jawad' ),
+			'care'   => __( 'Plus %s a month for care', 'jawad' ),
+			'rush'   => __( 'Rush timeline', 'jawad' ),
+			'intro'  => __( 'Estimate from the website', 'jawad' ),
+		),
+	);
+	return apply_filters( 'jd_estimator_config', $cfg );
+}
+
+/**
+ * Best estimator project type for a pricing plan, from its title.
+ */
+function jd_estimator_type_for( $title ) {
+	$t = strtolower( (string) $title );
+	if ( false !== strpos( $t, 'landing' ) ) {
+		return 'landing';
+	}
+	if ( preg_match( '/woo|store|shop/', $t ) ) {
+		return 'store';
+	}
+	if ( false !== strpos( $t, 'webflow' ) ) {
+		return 'webflow';
+	}
+	if ( preg_match( '/\bai\b|automation/', $t ) ) {
+		return 'ai';
+	}
+	if ( false !== strpos( $t, 'app' ) ) {
+		return 'webapp';
+	}
+	if ( false !== strpos( $t, 'redesign' ) ) {
+		return 'redesign';
+	}
+	return 'business';
+}
+
+/**
+ * Prints the estimator popup once per page.
+ */
+function jd_estimator_modal() {
+	static $done = false;
+	if ( $done ) {
+		return;
+	}
+	$done = true;
+	$est  = render_block( array( 'blockName' => 'jd/estimator', 'attrs' => array(), 'innerBlocks' => array(), 'innerHTML' => '', 'innerContent' => array() ) );
+	printf(
+		'<dialog class="jd-est-modal" aria-labelledby="jd-est-modal-t" data-lenis-prevent><div class="jd-est-modal__head"><div><p class="jd-label">%1$s</p><h2 class="jd-est-modal__title" id="jd-est-modal-t">%2$s</h2></div><button type="button" class="jd-est-modal__close" aria-label="%3$s"><span aria-hidden="true">&times;</span></button></div>%4$s</dialog>',
+		esc_html__( 'Cost estimator', 'jawad' ),
+		esc_html__( 'What will it cost?', 'jawad' ),
+		esc_attr__( 'Close estimator', 'jawad' ),
+		$est // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	);
+}
+
+// The estimator popup sits at the end of every page so any "Estimate" link can open it.
+// Its own page keeps the full estimator instead, and without JavaScript links go there.
+add_action( 'wp_footer', function () {
+	if ( is_admin() || is_page( 'estimate' ) ) {
+		return;
+	}
+	jd_estimator_modal();
+} );

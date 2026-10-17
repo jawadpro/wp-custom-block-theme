@@ -101,8 +101,9 @@ function jd_import_starter() {
 
 	/* Pages ------------------------------------------------------------- */
 	$home    = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Home', 'post_name' => 'home', 'post_content' => jd_pattern_markup( 'jawad/page-home' ), 'menu_order' => 0 ), array(), $log );
-	$about   = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'About', 'post_name' => 'about', 'post_content' => jd_pattern_markup( 'jawad/page-about' ), 'page_template' => 'page-blank', 'menu_order' => 3 ), array( '_jd_seo_desc' => 'Jawad Ilyas is a WordPress developer with more than ten years of experience building fast, conversion-focused sites for businesses of every size.' ), $log );
-	$contact = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Contact', 'post_name' => 'contact', 'post_content' => jd_pattern_markup( 'jawad/page-contact' ), 'page_template' => 'page-blank', 'menu_order' => 5 ), array( '_jd_seo_desc' => 'Tell me about your WordPress project. You get a reply within 24 hours and a written fixed quote after a short call.' ), $log );
+	$about   = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'About', 'post_name' => 'about', 'post_content' => jd_pattern_markup( 'jawad/page-about' ), 'page_template' => 'page-blank', 'menu_order' => 3 ), array( '_jd_seo_desc' => 'Jawad Ilyas is a full stack web developer based in Lahore, Pakistan, with 12+ years building fast websites, Shopify and WooCommerce stores, Webflow sites and web apps.' ), $log );
+	jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Cost estimator', 'post_name' => 'estimate', 'post_content' => jd_pattern_markup( 'jawad/page-estimate' ), 'page_template' => 'page-blank', 'menu_order' => 4 ), array( '_jd_seo_desc' => 'Estimate the cost of your website, Shopify or WooCommerce store, web app or AI feature in a minute, then get a written fixed quote within 24 hours.' ), $log );
+	$contact = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Contact', 'post_name' => 'contact', 'post_content' => jd_pattern_markup( 'jawad/page-contact' ), 'page_template' => 'page-blank', 'menu_order' => 5 ), array( '_jd_seo_desc' => 'Tell me about your website, store or web app. You get a reply within 24 hours and a written fixed quote after a short call.' ), $log );
 	$journal = jd_seed_post( array( 'post_type' => 'page', 'post_title' => 'Journal', 'post_name' => 'journal', 'post_content' => '', 'menu_order' => 4 ), array(), $log );
 
 	if ( $home ) {
@@ -132,18 +133,25 @@ function jd_import_starter() {
 	/* Services ------------------------------------------------------------ */
 	$services = array(
 		array(
-			'Business websites', 'business-websites', 'A site that sells while you sleep',
-			'For consultants, clinics, trades and agencies. Designed around one goal: getting the right people to call or book.',
-			"Custom design, or built from your Figma file\nElementor or block editor, so your team can edit it\nContact and booking forms wired to email or your CRM\nOn-page SEO, Google Analytics and Search Console\n90+ mobile PageSpeed target, tested before launch\nRecorded walkthrough so you can update it yourself",
+			'Websites', 'websites', 'A site that sells while you sleep',
+			'Business sites and landing pages on WordPress, Webflow or Next.js. Designed around one goal: getting the right people to call or book.',
+			"Custom design, or built from your Figma file\nWordPress, Webflow or Next.js, whichever fits your team\nContact and booking forms wired to email or your CRM\nOn-page SEO, Google Analytics and Search Console\n90+ mobile PageSpeed target, tested before launch\nRecorded walkthrough so you can update it yourself",
 			'$1,500–3,500', 1500, '2–4 weeks',
-			"<!-- wp:paragraph -->\n<p>A business website has one job: turn the people who find you into enquiries. I design and build WordPress sites that load fast, explain your offer in seconds, and make it obvious what to do next.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>You approve the homepage design before any code is written, then watch the site come together on a private staging link. At launch you get a short training video so you can change text, images and pages yourself.</p>\n<!-- /wp:paragraph -->",
+			"<!-- wp:paragraph -->\n<p>A business website has one job: turn the people who find you into enquiries. I design and build sites on WordPress, Webflow or Next.js that load fast, explain your offer in seconds, and make it obvious what to do next.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>You approve the homepage design before any code is written, then watch the site come together on a private staging link. At launch you get a short training video so you can change text, images and pages yourself.</p>\n<!-- /wp:paragraph -->",
 		),
 		array(
-			'WooCommerce stores', 'woocommerce-stores', 'A checkout people finish',
-			'New stores, or rescuing one that leaks sales. Clean product pages and a fast, trustworthy mobile checkout.',
-			"Product, category, cart and checkout templates\nStripe, PayPal, Apple Pay and Google Pay\nUS sales tax and Canadian GST/HST setup\nShipping zones, rates and label plugins\nOrder emails, abandoned-cart and review flows\nPlugin conflicts and checkout bugs traced to the cause",
-			'$3,500–6,000', 3500, '3–6 weeks',
-			"<!-- wp:paragraph -->\n<p>Most WooCommerce stores lose sales in the last two steps. I build and repair stores so product pages answer the buyer's questions and checkout is quick on a phone.</p>\n<!-- /wp:paragraph -->",
+			'Online stores', 'online-stores', 'A checkout people finish',
+			'Shopify and WooCommerce stores, new or rescued. Clean product pages and a fast, trustworthy mobile checkout.',
+			"Custom Shopify themes in Liquid, or WooCommerce builds\nProduct, category, cart and checkout templates\nStripe, PayPal, Apple Pay and Google Pay\nUS sales tax and Canadian GST/HST setup\nShipping zones, rates and label plugins\nOrder emails, abandoned-cart and review flows\nPlugin conflicts and checkout bugs traced to the cause",
+			'$3,000–6,000', 3000, '3–6 weeks',
+			"<!-- wp:paragraph -->\n<p>Most online stores lose sales in the last two steps. I build and repair Shopify and WooCommerce stores so product pages answer the buyer's questions and checkout is quick on a phone.</p>\n<!-- /wp:paragraph -->",
+		),
+		array(
+			'Web apps and AI', 'web-apps-and-ai', 'Custom software, built to last',
+			'Dashboards, portals, SaaS features and AI tools built with React, Next.js, Node.js or Laravel, plus OpenAI integrations and automation.',
+			"React, Next.js, Node.js or Laravel builds\nREST and GraphQL APIs and third-party integrations\nAI chatbots, assistants and content tools on the OpenAI API\nWorkflow automation with n8n or Zapier\nAuth, payments, dashboards and admin panels\nDeployed on AWS, DigitalOcean or Vercel with CI/CD",
+			'$5,000–12,000', 5000, '4–10 weeks',
+			"<!-- wp:paragraph -->\n<p>When a template won't do, I build the custom piece: a client portal, an internal dashboard, a booking engine or an AI assistant trained on your content. You get clean, documented code and a scope agreed in writing before work starts.</p>\n<!-- /wp:paragraph -->",
 		),
 		array(
 			'Speed and fixes', 'speed-and-fixes', 'Fixed at the root, not patched',
@@ -157,7 +165,7 @@ function jd_import_starter() {
 			'Monthly updates, backups and small edits, so your site never goes stale or breaks quietly.',
 			"Weekly updates and offsite backups\nUptime and security monitoring\nEdit hours every month\nMonthly health report in plain English",
 			'from $79/mo', 79, 'Monthly',
-			"<!-- wp:paragraph -->\n<p>A website is never finished. Care plans keep WordPress, plugins and backups up to date, watch for downtime and attacks, and give you hours each month for small changes.</p>\n<!-- /wp:paragraph -->",
+			"<!-- wp:paragraph -->\n<p>A website is never finished. Care plans keep your platform, plugins, apps and backups up to date, watch for downtime and attacks, and give you hours each month for small changes.</p>\n<!-- /wp:paragraph -->",
 		),
 	);
 	foreach ( $services as $i => $s ) {
@@ -171,12 +179,15 @@ function jd_import_starter() {
 	/* Pricing plans ------------------------------------------------------- */
 	$contact_url = $contact ? get_permalink( $contact ) : home_url( '/contact/' );
 	$plans       = array(
-		array( 'Landing page', 'project', '$500', '–1.5k', 'One focused page for an offer, ad campaign or launch.', "Custom layout\nForm or booking setup\n5 to 10 days", 0, '', 'Start a landing page' ),
-		array( 'Business website', 'project', '$1.5k', '–3.5k', 'Homepage plus inner pages, forms, SEO basics and launch support.', "5 to 10 pages\nEditable by your team\n2 to 4 weeks", 1, 'Most booked', 'Start my website' ),
-		array( 'WooCommerce store', 'project', '$3.5k', '–6k', 'Products, checkout, payments and shipping, fast on mobile.', "Payments and tax\nSpeed tuned\n3 to 6 weeks", 0, '', 'Start my store' ),
+		array( 'Landing page', 'project', '$500', '–1.5k', 'One focused page for an offer, ad campaign or launch.', "WordPress, Webflow or Next.js\nForm or booking setup\n5 to 10 days", 0, '', 'Start a landing page' ),
+		array( 'Business website', 'project', '$1.5k', '–3.5k', 'Homepage plus inner pages, forms, SEO basics and launch support.', "WordPress or Webflow, 5 to 10 pages\nEditable by your team\n2 to 4 weeks", 1, 'Most booked', 'Start my website' ),
+		array( 'Online store', 'project', '$3k', '–6k', 'Shopify or WooCommerce: products, checkout, payments and shipping, fast on mobile.', "Custom Shopify theme or WooCommerce\nPayments, tax and shipping\n3 to 6 weeks", 0, '', 'Start my store' ),
+		array( 'Webflow site', 'project', '$1.2k', '–3k', 'A Webflow build your marketing team can edit without a developer.', "From your Figma file or my design\nCMS collections and interactions\n2 to 4 weeks", 0, '', 'Start my Webflow site' ),
+		array( 'AI and automation', 'project', '$800', '–3k', 'Chatbots, AI assistants and workflows that save your team hours.', "OpenAI API integrations\nn8n or Zapier workflows\n1 to 3 weeks", 0, '', 'Automate my work' ),
+		array( 'Custom web app', 'project', '$5k', '–12k', 'Portals, dashboards and SaaS features built with React, Next.js, Node.js or Laravel.', "Auth, payments and admin\nAPIs and integrations\n4 to 10 weeks", 0, '', 'Plan my web app' ),
 		array( 'Keep', 'care', '$79', '/mo', 'Updates, backups and monitoring.', "Weekly updates and backups\nUptime and security monitoring\nMonthly report", 0, '', '' ),
 		array( 'Grow', 'care', '$149', '/mo', 'For sites that change often.', "Everything in Keep\n2 edit hours a month\nSpeed checks and fixes", 1, 'Most chosen', '' ),
-		array( 'Store', 'care', '$249', '/mo', 'For WooCommerce stores.', "Everything in Grow\nCheckout and payment checks\n4 edit hours a month", 0, '', '' ),
+		array( 'Store', 'care', '$249', '/mo', 'For Shopify and WooCommerce stores.', "Everything in Grow\nCheckout and payment checks\n4 edit hours a month", 0, '', '' ),
 	);
 	foreach ( $plans as $i => $p ) {
 		$meta = array( '_jd_group' => $p[1], '_jd_price_main' => $p[2], '_jd_price_sub' => $p[3], '_jd_desc' => $p[4], '_jd_features' => $p[5] );
@@ -213,11 +224,12 @@ function jd_import_starter() {
 		$group = wp_insert_term( 'General', 'jd_faq_group', array( 'slug' => 'general' ) );
 	}
 	$faqs = array(
+		array( 'Which platform should I build on?', 'It depends on who edits the site and what it needs to do. WordPress suits content-heavy sites, Webflow suits marketing teams, Shopify suits most stores, and a custom React or Next.js app suits anything that behaves like software. I recommend one on the first call, with reasons.' ),
 		array( 'How do time zones work if you are in Pakistan?', 'I work 7pm to midnight my time, which is 9am to 2pm Eastern and 6 to 11am Pacific. You get replies during your working day and progress overnight.' ),
 		array( 'Will I be able to edit the site myself?', 'Yes. Every site ships with a short recorded walkthrough of how to change text, images and pages without breaking the layout.' ),
 		array( 'Who owns the website?', 'You do. Hosting, domain, logins and files are in your name from day one.' ),
 		array( 'What if something breaks after launch?', 'Anything I built that breaks in the first 30 days is fixed free. After that, a care plan or a small fixed-price fix.' ),
-		array( "Can you work from my designer's Figma file?", 'Yes. I build Figma designs accurately in Elementor or as a lightweight custom theme, whichever suits how your team will edit it.' ),
+		array( "Can you work from my designer's Figma file?", 'Yes. I build Figma designs accurately in WordPress, Webflow, Shopify or React, whichever suits how your team will edit it.' ),
 	);
 	foreach ( $faqs as $i => $f ) {
 		$id = jd_seed_post( array( 'post_type' => 'jd_faq', 'post_title' => $f[0], 'post_content' => "<!-- wp:paragraph -->\n<p>" . $f[1] . "</p>\n<!-- /wp:paragraph -->", 'menu_order' => $i ), array(), $log );

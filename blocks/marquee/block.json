@@ -10,7 +10,7 @@
 	"attributes": {
 		"items": {
 			"type": "string",
-			"default": "Business sites, WooCommerce, Speed fixes, Care plans, Figma to WordPress"
+			"default": "Websites, Shopify stores, Web apps, AI automation, Webflow, WooCommerce, Speed fixes, Care plans"
 		}
 	},
 	"supports": {

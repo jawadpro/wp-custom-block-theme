@@ -56,26 +56,26 @@ P = {}
 
 P['hero'] = ('Home hero', 'jawad-sections', 'Rounded hero screen with headline, subtext, calls to action and speed ring.', group(group(group(J(
     block('jd/badges'),
-    h('Turn visitors<br>into <strong>paying</strong><br>clients.', 1, 'jd-hero__title jd-split'),
+    h('<strong>Full stack</strong><br>web development,<br>done right.', 1, 'jd-hero__title jd-split'),
     group(J(
         group(J(
-            p('Your website should bring in calls, bookings and sales, not just look nice. I build fast WordPress and WooCommerce sites that make it easy for people to choose you, then keep them running so you can focus on the business.', 'jd-lead'),
-            buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
+            p('12+ years turning ideas into fast websites, online stores and custom apps. One developer handles design, code and launch, with a fixed price up front and no surprises.', 'jd-lead'),
+            buttons([button('Get my fixed quote', url('/contact/'), 'jd-mag'), button('Estimate my cost', url('/estimate/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
         block('jd/offer')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
 
-stats = [('10+', 'years building on WordPress'), ('500+', 'sites built, fixed or sped up'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
+stats = [('12+', 'years building for the web'), ('500+', 'sites, stores and apps shipped'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
 P['proof'] = ('Proof numbers', 'jawad-sections', 'Four large count-up numbers.', group(group(J(*[group(J(p(n, 'jd-stat__n'), p(t, 'jd-muted'))) for n, t in stats]), 'jd-proof'), 'jd-wrap', 'section'))
 
 P['statement'] = ('Problem statement', 'jawad-sections', 'Large statement that lights up word by word on scroll.', group(J(
-    p('The problem', 'jd-label'),
-    p('Most business websites are slow, confusing, and quietly losing leads. I build sites that load in under two seconds, explain what you do at a glance, and make the <em>next step</em> obvious.', 'jd-statement__text jd-fill')), 'jd-section jd-wrap jd-statement', 'section'))
+    p('Why clients stay', 'jd-label'),
+    p('Been ghosted, overcharged, or left with half-finished code? Here you get one senior developer, a fixed price in writing, progress you can see every day, and a site that loads in under two seconds. You always know the <em>next step</em>.', 'jd-statement__text jd-fill')), 'jd-section jd-wrap jd-statement', 'section'))
 
 P['services-stack'] = ('Services stack', 'jawad-sections', 'Heading with sticky stacked service cards from the Services post type.', group(J(
-    h('Four jobs.<br>Done properly.', 2, 'jd-section__title'),
+    h('One developer.<br>Every layer.', 2, 'jd-section__title'),
     block('jd/services')), 'jd-section jd-wrap', 'section'))
 
 P['work-track'] = ('Work track', 'jawad-sections', 'Heading with a horizontal pinned row of projects.', group(J(
-    group(J(h('Recent<br>builds', 2, 'jd-section__title'), buttons([button('All projects', url('/work/'), 'is-style-ghost jd-mag')])), 'jd-wrap jd-section__head'),
+    group(J(h('Proof,<br>not promises', 2, 'jd-section__title'), buttons([button('All projects', url('/work/'), 'is-style-ghost jd-mag')])), 'jd-wrap jd-section__head'),
     block('jd/projects')), 'jd-section jd-hwork', 'section'))
 
 steps = [('01', '20-minute call', 'Goals, budget and deadline. A written fixed quote follows within 24 hours.'),
@@ -92,18 +92,22 @@ P['testimonials'] = ('Testimonials', 'jawad-sections', 'Rotating client quotes.'
     block('jd/testimonials')), 'jd-section is-tight-top jd-wrap', 'section'))
 
 P['pricing'] = ('Pricing', 'jawad-sections', 'Project packages from the Pricing post type.', group(J(
-    group(J(h('Prices up front', 2, 'jd-section__title'), p('Fixed quotes, milestone payments, and revisions until the design is right.', 'jd-muted')), 'jd-section__head'),
+    group(J(h('Prices up front', 2, 'jd-section__title'), p('Websites, stores, web apps and AI work, all on fixed quotes with milestone payments and revisions until the design is right.', 'jd-muted')), 'jd-section__head'),
     block('jd/pricing', {'group': 'project'})), 'jd-section is-tight-top jd-wrap', 'section', 'pricing'))
 
 P['cta'] = ('Big call to action', 'jawad-sections', 'Full-width cobalt panel with the free audit offer.', group(group(J(
-    p('Free quote · No obligation', 'jd-label'),
-    h('Slow, broken,<br>or not selling?', 2, 'jd-cta__title'),
-    p('Tell me what is wrong with your site, or what you want to build. You get a written fixed price and timeline within 24 hours.', 'jd-lead'),
-    buttons([button('Get a fixed quote', url('/contact/'), 'jd-mag'), button('See the work', url('/work/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
+    p('Free quote · Reply within 24 hours', 'jd-label'),
+    h('Ready to hire?<br>Start today.', 2, 'jd-cta__title'),
+    p('Share your brief, a job post, or a few lines about what you need. You get a written fixed price, timeline and plan within 24 hours.', 'jd-lead'),
+    buttons([button('Get my fixed quote', url('/contact/'), 'jd-mag'), button('Estimate my cost', url('/estimate/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-wrap'), 'jd-cta', 'section'))
+
+P['estimator'] = ('Cost estimator', 'jawad-sections', 'Interactive project cost estimator that hands the estimate to the quote form.', group(J(
+    group(J(h('What will<br>it cost?', 2, 'jd-section__title'), p('Pick what you need and see a price range straight away. No email needed.', 'jd-muted')), 'jd-section__head'),
+    block('jd/estimator')), 'jd-section is-tight-top jd-wrap', 'section', 'estimate'))
 
 pay = [('Fixed quote', 'Written scope and price before any work starts. No hourly surprises.'),
        ('Milestones', 'Usually 40% to start, 40% at design approval, 20% at launch.'),
-       ('Safe payment', 'Stripe invoice, or Upwork escrow if you want the extra protection.')]
+       ('Safe payment', 'Pay by card through a secure Stripe invoice, or by bank transfer.')]
 P['pay'] = ('Payment terms', 'jawad-sections', 'How paying works, three columns.', group(J(
     p('How paying works', 'jd-label'),
     group(J(*[group(J(h(t, 3), p(d))) for t, d in pay]), 'jd-pay')), 'jd-section is-tight-top jd-wrap', 'section'))
@@ -122,7 +126,14 @@ princ = [('Replies inside 24 hours', "Usually much faster. If I'm away, you know
          ('Everything is yours', 'Hosting, domain, logins and files sit in your accounts, not mine.'),
          ('Honest scope', "If a job isn't a fit for me, I'll say so on the first call and point you elsewhere."),
          ('30 days of free fixes', 'Anything I built that breaks after launch, I fix at no charge.')]
-tools = ['WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types', 'PHP', 'JavaScript', 'Figma', 'WP Rocket', 'Rank Math', 'Cloudflare', 'Zapier', 'n8n', 'OpenAI API']
+tools = [
+    'WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types', 'Gutenberg blocks', 'Shopify', 'Liquid', 'Webflow',
+    'PHP', 'Laravel', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Node.js', 'HTML5', 'CSS3', 'Sass', 'Tailwind CSS', 'Vite',
+    'REST APIs', 'GraphQL', 'MySQL', 'Redis', 'Git', 'GitHub',
+    'Docker', 'Kubernetes', 'GitHub Actions', 'CI/CD', 'Linux', 'Bash', 'Nginx', 'Apache', 'LiteSpeed', 'WP-CLI', 'cPanel',
+    'AWS', 'Google Cloud', 'DigitalOcean', 'Terraform', 'Cloudflare',
+    'Figma', 'WP Rocket', 'Rank Math', 'Zapier', 'n8n', 'OpenAI API',
+]
 
 P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
     pattern_ref('jawad/hero'), pattern_ref('jawad/proof'), pattern_ref('jawad/statement'), block('jd/marquee'),
@@ -132,7 +143,7 @@ P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
 P['page-about'] = ('About page', 'jawad-pages', 'About page with portrait, live clocks, principles and toolkit.', J(
     group(group(J(
         group(J(p('About', 'jd-label'), h('One developer.<br><em>No hand-offs.</em>', 1, 'jd-split'),
-                p("I'm Jawad Ilyas. I've built WordPress sites for more than ten years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
+                p("I'm Jawad Ilyas, a full stack web developer based in Lahore, Pakistan. For more than 12 years I've built websites, online stores and web apps with WordPress, Shopify, Webflow, React and Node.js, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
         group(p('JI', 'jd-portrait__ini'), 'jd-portrait')), 'jd-about'), 'jd-phero jd-wrap', 'section'),
     group(block('jd/clocks'), 'jd-wrap', 'section'),
     group(J(p('What you can count on', 'jd-label'), group(J(*[group(J(h(t, 3), p(d))) for t, d in princ]), 'jd-princ')), 'jd-section jd-wrap', 'section'),
@@ -151,6 +162,12 @@ P['page-book'] = ('Book a call page', 'jawad-pages', 'Book a 20-minute call: int
                 '<!-- wp:list {"ordered":true,"className":"jd-next"} -->\n<ol class="wp-block-list jd-next"><!-- wp:list-item -->\n<li>Your goals, and what the site needs to do for the business</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>What you have now: site, hosting, content, deadlines</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>An honest view on scope, timeline and budget</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>A written fixed quote within 24 hours of the call</li>\n<!-- /wp:list-item --></ol>\n<!-- /wp:list -->',
                 p('Prefer writing? <a href="' + url('/contact/') + '">Send the details instead</a>.', 'jd-muted')), 'jd-box jd-book__side'),
         block('jd/booking')), 'jd-book'), 'jd-wrap jd-section is-tight-top', 'section', 'book')))
+
+P['page-estimate'] = ('Cost estimator page', 'jawad-pages', 'Cost estimator page: intro and the interactive estimator.', J(
+    group(J(p('Cost estimator', 'jd-label'), h("What will<br><em>it cost?</em>", 1, 'jd-split'),
+            p('Pick what you need and see a price range and timeline straight away. When it looks right, send it over and you get a written fixed quote within 24 hours.', 'jd-lead')), 'jd-phero jd-wrap', 'section'),
+    group(block('jd/estimator'), 'jd-wrap jd-section is-tight-top', 'section', 'estimate'),
+    pattern_ref('jawad/cta')))
 
 for slug, (title, cat, desc, content) in P.items():
     inserter = 'yes'

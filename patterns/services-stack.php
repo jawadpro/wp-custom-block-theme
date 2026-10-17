@@ -12,7 +12,7 @@
 ?>
 <!-- wp:group {"tagName":"section","className":"jd-section jd-wrap"} -->
 <section class="wp-block-group jd-section jd-wrap"><!-- wp:heading {"className":"jd-section__title"} -->
-<h2 class="wp-block-heading jd-section__title">Four jobs.<br>Done properly.</h2>
+<h2 class="wp-block-heading jd-section__title">One developer.<br>Every layer.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:jd/services /--></section>

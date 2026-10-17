@@ -13,24 +13,24 @@
 <!-- wp:group {"tagName":"section","className":"jd-cta"} -->
 <section class="wp-block-group jd-cta"><!-- wp:group {"className":"jd-wrap"} -->
 <div class="wp-block-group jd-wrap"><!-- wp:paragraph {"className":"jd-label"} -->
-<p class="jd-label">Free quote · No obligation</p>
+<p class="jd-label">Free quote · Reply within 24 hours</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"jd-cta__title"} -->
-<h2 class="wp-block-heading jd-cta__title">Slow, broken,<br>or not selling?</h2>
+<h2 class="wp-block-heading jd-cta__title">Ready to hire?<br>Start today.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">Tell me what is wrong with your site, or what you want to build. You get a written fixed price and timeline within 24 hours.</p>
+<p class="jd-lead">Share your brief, a job post, or a few lines about what you need. You get a written fixed price, timeline and plan within 24 hours.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"is-large"} -->
 <div class="wp-block-buttons is-large"><!-- wp:button {"className":"jd-mag"} -->
-<div class="wp-block-button jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get a fixed quote</a></div>
+<div class="wp-block-button jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get my fixed quote</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost jd-mag"} -->
-<div class="wp-block-button is-style-ghost jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/work/' ) ); ?>">See the work</a></div>
+<div class="wp-block-button is-style-ghost jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/estimate/' ) ); ?>">Estimate my cost</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></section>

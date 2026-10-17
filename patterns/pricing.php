@@ -17,7 +17,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->
-<p class="jd-muted">Fixed quotes, milestone payments, and revisions until the design is right.</p>
+<p class="jd-muted">Websites, stores, web apps and AI work, all on fixed quotes with milestone payments and revisions until the design is right.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

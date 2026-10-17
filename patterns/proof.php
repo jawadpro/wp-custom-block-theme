@@ -14,11 +14,11 @@
 <section class="wp-block-group jd-wrap"><!-- wp:group {"className":"jd-proof"} -->
 <div class="wp-block-group jd-proof"><!-- wp:group -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"jd-stat__n"} -->
-<p class="jd-stat__n">10+</p>
+<p class="jd-stat__n">12+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->
-<p class="jd-muted">years building on WordPress</p>
+<p class="jd-muted">years building for the web</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -28,7 +28,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->
-<p class="jd-muted">sites built, fixed or sped up</p>
+<p class="jd-muted">sites, stores and apps shipped</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

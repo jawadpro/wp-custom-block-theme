@@ -16,22 +16,22 @@
 <div class="wp-block-group jd-wrap"><!-- wp:jd/badges /-->
 
 <!-- wp:heading {"level":1,"className":"jd-hero__title jd-split"} -->
-<h1 class="wp-block-heading jd-hero__title jd-split">Turn visitors<br>into <strong>paying</strong><br>clients.</h1>
+<h1 class="wp-block-heading jd-hero__title jd-split"><strong>Full stack</strong><br>web development,<br>done right.</h1>
 <!-- /wp:heading -->
 
 <!-- wp:group {"className":"jd-hero__row"} -->
 <div class="wp-block-group jd-hero__row"><!-- wp:group {"className":"jd-hero__main"} -->
 <div class="wp-block-group jd-hero__main"><!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">Your website should bring in calls, bookings and sales, not just look nice. I build fast WordPress and WooCommerce sites that make it easy for people to choose you, then keep them running so you can focus on the business.</p>
+<p class="jd-lead">12+ years turning ideas into fast websites, online stores and custom apps. One developer handles design, code and launch, with a fixed price up front and no surprises.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"is-large"} -->
 <div class="wp-block-buttons is-large"><!-- wp:button {"className":"jd-mag"} -->
-<div class="wp-block-button jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get a fixed quote</a></div>
+<div class="wp-block-button jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get my fixed quote</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost jd-mag"} -->
-<div class="wp-block-button is-style-ghost jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/work/' ) ); ?>">See the work</a></div>
+<div class="wp-block-button is-style-ghost jd-mag"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/estimate/' ) ); ?>">Estimate my cost</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
