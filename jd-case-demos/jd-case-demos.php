@@ -2,7 +2,7 @@
 /**
  * Plugin Name: JD Case Demos
  * Description: Interactive, responsive demos of your case studies at /demos/. Preview each live project in desktop, tablet and phone frames, or as scrolling screenshots. Separate from the theme; deactivate to remove it completely.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Jawad Ilyas
  * Requires at least: 6.4
  * Requires PHP: 7.4
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'JDCD_VERSION', '1.0.0' );
+define( 'JDCD_VERSION', '1.0.1' );
 define( 'JDCD_URL', plugin_dir_url( __FILE__ ) );
 define( 'JDCD_BASE', 'demos' );
 
