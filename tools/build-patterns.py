@@ -63,7 +63,7 @@ P['hero'] = ('Home hero', 'jawad-sections', 'Rounded hero screen with headline, 
             buttons([button('Get my fixed quote', url('/contact/'), 'jd-mag'), button('Estimate my cost', url('/estimate/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
         block('jd/offer')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
 
-stats = [('12+', 'years building on WordPress'), ('500+', 'sites built, fixed or sped up'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
+stats = [('12+', 'years building for the web'), ('500+', 'sites, stores and apps shipped'), ('24h', 'reply time, every weekday'), ('30d', 'free fixes after every launch')]
 P['proof'] = ('Proof numbers', 'jawad-sections', 'Four large count-up numbers.', group(group(J(*[group(J(p(n, 'jd-stat__n'), p(t, 'jd-muted'))) for n, t in stats]), 'jd-proof'), 'jd-wrap', 'section'))
 
 P['statement'] = ('Problem statement', 'jawad-sections', 'Large statement that lights up word by word on scroll.', group(J(
@@ -71,7 +71,7 @@ P['statement'] = ('Problem statement', 'jawad-sections', 'Large statement that l
     p('Been ghosted, overcharged, or left with half-finished code? Here you get one senior developer, a fixed price in writing, progress you can see every day, and a site that loads in under two seconds. You always know the <em>next step</em>.', 'jd-statement__text jd-fill')), 'jd-section jd-wrap jd-statement', 'section'))
 
 P['services-stack'] = ('Services stack', 'jawad-sections', 'Heading with sticky stacked service cards from the Services post type.', group(J(
-    h('Four jobs.<br>Done properly.', 2, 'jd-section__title'),
+    h('One developer.<br>Every layer.', 2, 'jd-section__title'),
     block('jd/services')), 'jd-section jd-wrap', 'section'))
 
 P['work-track'] = ('Work track', 'jawad-sections', 'Heading with a horizontal pinned row of projects.', group(J(
@@ -92,7 +92,7 @@ P['testimonials'] = ('Testimonials', 'jawad-sections', 'Rotating client quotes.'
     block('jd/testimonials')), 'jd-section is-tight-top jd-wrap', 'section'))
 
 P['pricing'] = ('Pricing', 'jawad-sections', 'Project packages from the Pricing post type.', group(J(
-    group(J(h('Prices up front', 2, 'jd-section__title'), p('Fixed quotes, milestone payments, and revisions until the design is right.', 'jd-muted')), 'jd-section__head'),
+    group(J(h('Prices up front', 2, 'jd-section__title'), p('Websites, stores, web apps and AI work, all on fixed quotes with milestone payments and revisions until the design is right.', 'jd-muted')), 'jd-section__head'),
     block('jd/pricing', {'group': 'project'})), 'jd-section is-tight-top jd-wrap', 'section', 'pricing'))
 
 P['cta'] = ('Big call to action', 'jawad-sections', 'Full-width cobalt panel with the free audit offer.', group(group(J(
@@ -143,7 +143,7 @@ P['page-home'] = ('Home page', 'jawad-pages', 'Full home page layout.', J(
 P['page-about'] = ('About page', 'jawad-pages', 'About page with portrait, live clocks, principles and toolkit.', J(
     group(group(J(
         group(J(p('About', 'jd-label'), h('One developer.<br><em>No hand-offs.</em>', 1, 'jd-split'),
-                p("I'm Jawad Ilyas, a WordPress developer based in Lahore, Pakistan. I've built WordPress sites for more than 12 years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
+                p("I'm Jawad Ilyas, a full stack web developer based in Lahore, Pakistan. For more than 12 years I've built websites, online stores and web apps with WordPress, Shopify, Webflow, React and Node.js, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.", 'jd-lead')), 'jd-about__text'),
         group(p('JI', 'jd-portrait__ini'), 'jd-portrait')), 'jd-about'), 'jd-phero jd-wrap', 'section'),
     group(block('jd/clocks'), 'jd-wrap', 'section'),
     group(J(p('What you can count on', 'jd-label'), group(J(*[group(J(h(t, 3), p(d))) for t, d in princ]), 'jd-princ')), 'jd-section jd-wrap', 'section'),

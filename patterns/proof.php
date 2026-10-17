@@ -18,7 +18,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->
-<p class="jd-muted">years building on WordPress</p>
+<p class="jd-muted">years building for the web</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -28,7 +28,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"jd-muted"} -->
-<p class="jd-muted">sites built, fixed or sped up</p>
+<p class="jd-muted">sites, stores and apps shipped</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

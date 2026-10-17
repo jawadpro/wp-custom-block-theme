@@ -96,7 +96,7 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 
 add_filter( 'document_title_parts', function ( $parts ) {
 	if ( jd_seo_enabled() && is_post_type_archive( array( 'jd_project', 'jd_service' ) ) ) {
-		$parts['title'] = is_post_type_archive( 'jd_project' ) ? __( 'Work and case studies', 'jawad' ) : __( 'WordPress services and pricing', 'jawad' );
+		$parts['title'] = is_post_type_archive( 'jd_project' ) ? __( 'Work and case studies', 'jawad' ) : __( 'Web development services and pricing', 'jawad' );
 	}
 	return $parts;
 } );

@@ -259,7 +259,7 @@
 		} );
 	} );
 
-	/* Hero flow lines ------------------------------------------------------ */
+	/* Hero code rain ------------------------------------------------------ */
 	safe( 'field', function () {
 		var screen = $( '.jd-screen' );
 		if ( ! screen || ! cfg.field || ! cfg.motion || reduce ) {
@@ -280,40 +280,62 @@
 			cv.height = H * dpr;
 			ctx.setTransform( dpr, 0, 0, dpr, 0, 0 );
 		}
+		var glyphs = '{}[]()<>/=;:$#&|01fnconstletasyncawaitphpjsxcssliquid'.split( '' );
+		var fs = 0, cols = [];
+		function pick() {
+			return glyphs[ ( Math.random() * glyphs.length ) | 0 ];
+		}
+		function setup() {
+			fs = W < 700 ? 13 : 15;
+			cols = [];
+			var n = Math.ceil( W / fs );
+			for ( var i = 0; i < n; i++ ) {
+				var u = i / n;
+				// Denser and brighter toward the right, leaving the headline side calm.
+				if ( Math.random() > 0.15 + 0.7 * u ) {
+					continue;
+				}
+				var len = 6 + ( ( Math.random() * 16 ) | 0 );
+				var trail = [];
+				for ( var j = 0; j < len; j++ ) {
+					trail.push( pick() );
+				}
+				cols.push( { x: i * fs, y: Math.random() * H, v: 0.6 + Math.random() * 1.4, t: trail, a: 0.25 + 0.75 * u } );
+			}
+		}
 		function draw() {
 			ctx.clearRect( 0, 0, W, H );
-			var n = W < 700 ? 14 : 22;
-			var tt = tick * 0.008;
-			var amp = Math.min( 90, H * 0.12 );
-			var grad = ctx.createLinearGradient( 0, 0, W, 0 );
-			grad.addColorStop( 0, 'rgba(91,116,255,0)' );
-			grad.addColorStop( 0.35, 'rgba(91,116,255,.55)' );
-			grad.addColorStop( 0.8, 'rgba(92,242,200,.85)' );
-			grad.addColorStop( 1, 'rgba(92,242,200,.4)' );
-			ctx.strokeStyle = grad;
-			for ( var i = 0; i < n; i++ ) {
-				var f = i / ( n - 1 );
-				var base = H * ( 0.08 + f * 0.62 );
-				ctx.globalAlpha = 0.18 + 0.5 * Math.sin( f * Math.PI );
-				ctx.lineWidth = i % 5 === 0 ? 1.4 : 0.8;
-				ctx.beginPath();
-				for ( var x = 0; x <= W + 8; x += 8 ) {
-					var u = x / W;
-					var y = base +
-						Math.sin( x * 0.0042 + tt + i * 0.32 ) * amp * ( 0.25 + 0.75 * u ) +
-						Math.cos( x * 0.0016 - tt * 0.7 + i * 0.18 ) * amp * 0.55;
-					var dx = x - mx, dy = y - my;
-					var m = Math.max( 0, 1 - Math.sqrt( dx * dx + dy * dy ) / 200 );
-					y += m * m * 36 * ( y > my ? 1 : -1 );
-					if ( x === 0 ) {
-						ctx.moveTo( x, y );
-					} else {
-						ctx.lineTo( x, y );
+			ctx.font = fs + 'px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+			ctx.textBaseline = 'top';
+			for ( var i = 0; i < cols.length; i++ ) {
+				var c = cols[ i ];
+				var len = c.t.length;
+				for ( var j = 0; j < len; j++ ) {
+					var y = c.y - j * fs;
+					if ( y < -fs || y > H ) {
+						continue;
 					}
+					var dx = c.x - mx, dy = y - my;
+					var m = Math.max( 0, 1 - Math.sqrt( dx * dx + dy * dy ) / 160 );
+					var fade = 1 - j / len;
+					if ( j === 0 ) {
+						ctx.fillStyle = 'rgba(225,255,246,' + Math.min( 1, c.a * 0.9 + m ) + ')';
+					} else if ( m > 0.2 ) {
+						ctx.fillStyle = 'rgba(92,242,200,' + Math.min( 1, fade * 0.6 + m * 0.6 ) + ')';
+					} else {
+						ctx.fillStyle = ( j % 4 ? 'rgba(92,242,200,' : 'rgba(110,132,255,' ) + ( fade * 0.5 * c.a ) + ')';
+					}
+					ctx.fillText( c.t[ j ], c.x, y );
 				}
-				ctx.stroke();
+				c.y += c.v;
+				if ( Math.random() < 0.04 ) {
+					c.t[ ( Math.random() * len ) | 0 ] = pick();
+				}
+				if ( c.y - len * fs > H ) {
+					c.y = -Math.random() * H * 0.4;
+					c.v = 0.6 + Math.random() * 1.4;
+				}
 			}
-			ctx.globalAlpha = 1;
 		}
 		function loop() {
 			if ( visible && ! d.hidden ) {
@@ -323,9 +345,11 @@
 			window.requestAnimationFrame( loop );
 		}
 		size();
+		setup();
 		draw();
 		window.addEventListener( 'resize', function () {
 			size();
+			setup();
 			draw();
 		} );
 		screen.addEventListener( 'pointermove', function ( e ) {
@@ -884,7 +908,7 @@
 
 				var summary = ( i18n.intro || 'Estimate from the website' ) + ': ' + lines.join( ', ' ) + '. ' + money( lo ) + '–' + Math.round( hi ).toLocaleString( 'en-US' ) + ', ' + time.toLowerCase() + '.';
 				var mid = ( lo + hi ) / 2;
-				var params = new URLSearchParams( { jd_type: type.form || '', jd_budget: mid < 1500 ? 0 : mid < 3500 ? 1 : mid < 6000 ? 2 : 3, jd_est: summary } );
+				var params = new URLSearchParams( { jd_type: type.form || '', jd_budget: mid < 1500 ? 0 : mid < 3500 ? 1 : mid < 6000 ? 2 : mid < 12000 ? 3 : 4, jd_est: summary } );
 				cta.href = quote + ( quote.indexOf( '?' ) === -1 ? '?' : '&' ) + params.toString() + '#contact';
 
 				if ( motion ) {

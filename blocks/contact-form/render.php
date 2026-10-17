@@ -11,8 +11,8 @@ defined( 'ABSPATH' ) || exit;
 $jd_state = isset( $_GET['jd_sent'] ) ? sanitize_key( wp_unslash( $_GET['jd_sent'] ) ) : '';
 $jd_uid   = wp_unique_id( 'jdf' );
 
-$jd_types   = array( 'New website', 'WooCommerce store', 'Landing page', 'Speed or fix', 'Care plan', 'Something else' );
-$jd_budgets = array( 'Under $1,500', '$1,500–3,500', '$3,500–6,000', '$6,000+' );
+$jd_types   = array( 'New website', 'Online store', 'Web app', 'AI or automation', 'Landing page', 'Speed or fix', 'Care plan', 'Something else' );
+$jd_budgets = array( 'Under $1,500', '$1,500–3,500', '$3,500–6,000', '$6,000–12,000', '$12,000+' );
 $jd_whens   = array( 'ASAP', 'This month', 'Flexible' );
 
 $jd_radio = function ( $name, $choices, $checked, $uid ) {

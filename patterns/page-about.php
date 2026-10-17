@@ -22,7 +22,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">I'm Jawad Ilyas, a WordPress developer based in Lahore, Pakistan. I've built WordPress sites for more than 12 years, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.</p>
+<p class="jd-lead">I'm Jawad Ilyas, a full stack web developer based in Lahore, Pakistan. For more than 12 years I've built websites, online stores and web apps with WordPress, Shopify, Webflow, React and Node.js, for everyone from startups and local service companies to established brands. Whatever the size, the goal is the same: a site that works hard without babysitting. When you hire me, the person on the call is the person writing the code.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

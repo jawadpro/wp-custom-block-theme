@@ -129,10 +129,13 @@ function jd_estimator_config() {
 		'types'   => array(
 			'landing'  => array( 'label' => __( 'Landing page', 'jawad' ), 'min' => 500, 'max' => 1200, 'weeks' => array( 1, 2 ), 'sized' => false, 'designed' => true, 'form' => 'Landing page' ),
 			'business' => array( 'label' => __( 'Business website', 'jawad' ), 'min' => 1500, 'max' => 3000, 'weeks' => array( 2, 4 ), 'sized' => true, 'designed' => true, 'form' => 'New website' ),
-			'store'    => array( 'label' => __( 'WooCommerce store', 'jawad' ), 'min' => 3500, 'max' => 6000, 'weeks' => array( 3, 6 ), 'sized' => true, 'designed' => true, 'form' => 'WooCommerce store' ),
+			'store'    => array( 'label' => __( 'Shopify or WooCommerce store', 'jawad' ), 'min' => 3000, 'max' => 6000, 'weeks' => array( 3, 6 ), 'sized' => true, 'designed' => true, 'form' => 'Online store' ),
+			'webflow'  => array( 'label' => __( 'Webflow website', 'jawad' ), 'min' => 1200, 'max' => 3000, 'weeks' => array( 2, 4 ), 'sized' => true, 'designed' => true, 'form' => 'New website' ),
+			'webapp'   => array( 'label' => __( 'Custom web app', 'jawad' ), 'min' => 5000, 'max' => 12000, 'weeks' => array( 4, 10 ), 'sized' => false, 'designed' => true, 'form' => 'Web app' ),
+			'ai'       => array( 'label' => __( 'AI feature or automation', 'jawad' ), 'min' => 800, 'max' => 3000, 'weeks' => array( 1, 3 ), 'sized' => false, 'designed' => false, 'form' => 'AI or automation' ),
 			'redesign' => array( 'label' => __( 'Redesign or rebuild', 'jawad' ), 'min' => 1200, 'max' => 2800, 'weeks' => array( 2, 4 ), 'sized' => true, 'designed' => true, 'form' => 'New website' ),
 			'fix'      => array( 'label' => __( 'Speed, bugs or fixes', 'jawad' ), 'min' => 150, 'max' => 600, 'weeks' => array( 0.5, 1 ), 'sized' => false, 'designed' => false, 'form' => 'Speed or fix' ),
-			'custom'   => array( 'label' => __( 'Custom plugin or feature', 'jawad' ), 'min' => 800, 'max' => 2500, 'weeks' => array( 1, 4 ), 'sized' => false, 'designed' => false, 'form' => 'Something else' ),
+			'custom'   => array( 'label' => __( 'Custom feature or integration', 'jawad' ), 'min' => 800, 'max' => 2500, 'weeks' => array( 1, 4 ), 'sized' => false, 'designed' => false, 'form' => 'Something else' ),
 		),
 		'sizes'   => array(
 			'small'  => array( 'label' => __( 'Small: up to 5 pages', 'jawad' ), 'x' => 1, 'wx' => 1 ),
@@ -149,6 +152,8 @@ function jd_estimator_config() {
 			'multi'    => array( 'label' => __( 'More than one language', 'jawad' ), 'min' => 400, 'max' => 900 ),
 			'members'  => array( 'label' => __( 'Memberships or subscriptions', 'jawad' ), 'min' => 600, 'max' => 1500 ),
 			'crm'      => array( 'label' => __( 'CRM or Zapier hookups', 'jawad' ), 'min' => 250, 'max' => 600 ),
+			'chatbot'  => array( 'label' => __( 'AI chatbot or assistant', 'jawad' ), 'min' => 600, 'max' => 1500 ),
+			'api'      => array( 'label' => __( 'Third-party API integration', 'jawad' ), 'min' => 300, 'max' => 900 ),
 			'seo'      => array( 'label' => __( 'SEO setup and schema', 'jawad' ), 'min' => 200, 'max' => 400 ),
 			'migrate'  => array( 'label' => __( 'Move content from old site', 'jawad' ), 'min' => 200, 'max' => 600 ),
 			'copy'     => array( 'label' => __( 'Copywriting', 'jawad' ), 'min' => 300, 'max' => 800 ),
@@ -185,6 +190,15 @@ function jd_estimator_type_for( $title ) {
 	}
 	if ( preg_match( '/woo|store|shop/', $t ) ) {
 		return 'store';
+	}
+	if ( false !== strpos( $t, 'webflow' ) ) {
+		return 'webflow';
+	}
+	if ( preg_match( '/\bai\b|automation/', $t ) ) {
+		return 'ai';
+	}
+	if ( false !== strpos( $t, 'app' ) ) {
+		return 'webapp';
 	}
 	if ( false !== strpos( $t, 'redesign' ) ) {
 		return 'redesign';
