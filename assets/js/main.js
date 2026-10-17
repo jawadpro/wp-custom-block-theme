@@ -259,7 +259,7 @@
 		} );
 	} );
 
-	/* Hero code rain ------------------------------------------------------ */
+	/* Hero flow lines ------------------------------------------------------ */
 	safe( 'field', function () {
 		var screen = $( '.jd-screen' );
 		if ( ! screen || ! cfg.field || ! cfg.motion || reduce ) {
@@ -280,62 +280,56 @@
 			cv.height = H * dpr;
 			ctx.setTransform( dpr, 0, 0, dpr, 0, 0 );
 		}
-		var glyphs = '{}[]()<>/=;:$#&|01fnconstletasyncawaitphpjsxcssliquid'.split( '' );
-		var fs = 0, cols = [];
-		function pick() {
-			return glyphs[ ( Math.random() * glyphs.length ) | 0 ];
-		}
-		function setup() {
-			fs = W < 700 ? 13 : 15;
-			cols = [];
-			var n = Math.ceil( W / fs );
-			for ( var i = 0; i < n; i++ ) {
-				var u = i / n;
-				// Denser and brighter toward the right, leaving the headline side calm.
-				if ( Math.random() > 0.15 + 0.7 * u ) {
-					continue;
-				}
-				var len = 6 + ( ( Math.random() * 16 ) | 0 );
-				var trail = [];
-				for ( var j = 0; j < len; j++ ) {
-					trail.push( pick() );
-				}
-				cols.push( { x: i * fs, y: Math.random() * H, v: 0.6 + Math.random() * 1.4, t: trail, a: 0.25 + 0.75 * u } );
-			}
-		}
+		var tx = 0, ty = 0, hover = false, inf = 0;
 		function draw() {
+			// Ease the pointer and its strength so the lines glide instead of snapping.
+			mx += ( tx - mx ) * 0.08;
+			my += ( ty - my ) * 0.08;
+			inf += ( ( hover ? 1 : 0 ) - inf ) * 0.05;
 			ctx.clearRect( 0, 0, W, H );
-			ctx.font = fs + 'px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
-			ctx.textBaseline = 'top';
-			for ( var i = 0; i < cols.length; i++ ) {
-				var c = cols[ i ];
-				var len = c.t.length;
-				for ( var j = 0; j < len; j++ ) {
-					var y = c.y - j * fs;
-					if ( y < -fs || y > H ) {
-						continue;
+			var n = W < 700 ? 14 : 22;
+			var tt = tick * 0.008;
+			var amp = Math.min( 90, H * 0.12 );
+			var sig = W < 700 ? 90 : 130;
+			var s2 = 2 * sig * sig;
+			var push = 46 * inf;
+			var grad = ctx.createLinearGradient( 0, 0, W, 0 );
+			grad.addColorStop( 0, 'rgba(91,116,255,0)' );
+			grad.addColorStop( 0.35, 'rgba(91,116,255,.55)' );
+			grad.addColorStop( 0.8, 'rgba(92,242,200,.85)' );
+			grad.addColorStop( 1, 'rgba(92,242,200,.4)' );
+			ctx.strokeStyle = grad;
+			ctx.lineJoin = 'round';
+			ctx.lineCap = 'round';
+			var pts = [];
+			for ( var i = 0; i < n; i++ ) {
+				var f = i / ( n - 1 );
+				var base = H * ( 0.08 + f * 0.62 );
+				pts.length = 0;
+				for ( var x = -12; x <= W + 12; x += 12 ) {
+					var u = x / W;
+					var y = base +
+						Math.sin( x * 0.0042 + tt + i * 0.32 ) * amp * ( 0.25 + 0.75 * u ) +
+						Math.cos( x * 0.0016 - tt * 0.7 + i * 0.18 ) * amp * 0.55;
+					if ( push > 0.01 ) {
+						// Smooth Gaussian push away from the pointer: no sign flip, so no kinks.
+						var dx = x - mx, dy = y - my;
+						y += push * ( dy / sig ) * Math.exp( -( dx * dx + dy * dy ) / s2 );
 					}
-					var dx = c.x - mx, dy = y - my;
-					var m = Math.max( 0, 1 - Math.sqrt( dx * dx + dy * dy ) / 160 );
-					var fade = 1 - j / len;
-					if ( j === 0 ) {
-						ctx.fillStyle = 'rgba(225,255,246,' + Math.min( 1, c.a * 0.9 + m ) + ')';
-					} else if ( m > 0.2 ) {
-						ctx.fillStyle = 'rgba(92,242,200,' + Math.min( 1, fade * 0.6 + m * 0.6 ) + ')';
-					} else {
-						ctx.fillStyle = ( j % 4 ? 'rgba(92,242,200,' : 'rgba(110,132,255,' ) + ( fade * 0.5 * c.a ) + ')';
-					}
-					ctx.fillText( c.t[ j ], c.x, y );
+					pts.push( x, y );
 				}
-				c.y += c.v;
-				if ( Math.random() < 0.04 ) {
-					c.t[ ( Math.random() * len ) | 0 ] = pick();
+				ctx.globalAlpha = 0.18 + 0.5 * Math.sin( f * Math.PI );
+				ctx.lineWidth = i % 5 === 0 ? 1.4 : 0.8;
+				ctx.beginPath();
+				ctx.moveTo( pts[ 0 ], pts[ 1 ] );
+				// Curve through midpoints for a continuous, edge-free line.
+				for ( var k = 2; k < pts.length - 2; k += 2 ) {
+					ctx.quadraticCurveTo( pts[ k ], pts[ k + 1 ], ( pts[ k ] + pts[ k + 2 ] ) / 2, ( pts[ k + 1 ] + pts[ k + 3 ] ) / 2 );
 				}
-				if ( c.y - len * fs > H ) {
-					c.y = -Math.random() * H * 0.4;
-					c.v = 0.6 + Math.random() * 1.4;
-				}
+				ctx.lineTo( pts[ pts.length - 2 ], pts[ pts.length - 1 ] );
+				ctx.stroke();
 			}
+			ctx.globalAlpha = 1;
 		}
 		function loop() {
 			if ( visible && ! d.hidden ) {
@@ -345,20 +339,26 @@
 			window.requestAnimationFrame( loop );
 		}
 		size();
-		setup();
 		draw();
 		window.addEventListener( 'resize', function () {
 			size();
-			setup();
 			draw();
 		} );
 		screen.addEventListener( 'pointermove', function ( e ) {
 			var r = cv.getBoundingClientRect();
-			mx = e.clientX - r.left;
-			my = e.clientY - r.top;
+			tx = e.clientX - r.left;
+			ty = e.clientY - r.top;
+			if ( ! hover ) {
+				// Start the eased point near the cursor so it doesn't sweep in from far away.
+				if ( inf < 0.05 ) {
+					mx = tx;
+					my = ty;
+				}
+				hover = true;
+			}
 		} );
 		screen.addEventListener( 'pointerleave', function () {
-			mx = my = -999;
+			hover = false;
 		} );
 		if ( 'IntersectionObserver' in window ) {
 			new IntersectionObserver( function ( entries ) {

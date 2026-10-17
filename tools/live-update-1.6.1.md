@@ -1,12 +1,12 @@
-# Live update to v1.6.0: full stack repositioning + code rain hero
+# Live update to v1.6.1: full stack repositioning + smooth wave hero
 
-Source of truth: branch `playful-scroll`, commit 48ec823. New copy is in `inc/starter-content.php`,
+Source of truth: branch `playful-scroll`, commit in the go message (latest on the branch). New copy is in `inc/starter-content.php`,
 `inc/options.php` and `tools/build-patterns.py`; copy it from there exactly.
 
 ## 0. Back up first
 - Live theme files listed in step 1, page content of Home, About, Cost estimator, Contact,
   all `jd_service`, `jd_plan`, `jd_faq` posts with meta, and the theme options row.
-  Save to `wp-content/jd-theme-backups/<timestamp>-pre-1.6.0/`.
+  Save to `wp-content/jd-theme-backups/<timestamp>-pre-1.6.1/`.
 
 ## 1. Theme files (write from 48ec823, check md5 after)
 assets/js/main.js, blocks/contact-form/render.php, blocks/marquee/block.json, inc/blocks.php,
@@ -49,7 +49,7 @@ If a template override of templates/home.html exists in the DB (wp_template), up
 - Search Home/About/Contact/Estimate content for any other "WordPress developer" phrasing and report it.
 
 ## 7. Purge LiteSpeed and verify at 1440px and 390px
-- Hero shows code rain (no dots, lines or glow), no JS errors.
+- Hero shows the flowing wave lines (no code rain), and they bulge smoothly around the cursor with no kinks, easing in and out. No JS errors.
 - Pricing shows 6 project cards; each "estimate" link opens the popup with the right type preselected.
 - Estimator lists Shopify or WooCommerce store, Webflow website, Custom web app, AI feature or automation.
 - Services, FAQ, About and page <title>/meta description read full stack, no freelancing platform names.
