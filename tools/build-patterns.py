@@ -59,7 +59,7 @@ P['hero'] = ('Home hero', 'jawad-sections', 'Rounded hero screen with headline, 
     h('<strong>Full stack</strong><br>web development,<br>done right.', 1, 'jd-hero__title jd-split'),
     group(J(
         group(J(
-            p('Front end, back end and everything in between. You get a senior full stack developer with 12+ years building WordPress, WooCommerce, Shopify and custom web apps, a written fixed price within 24 hours, daily updates in your time zone, and 30 days of free fixes after launch.', 'jd-lead'),
+            p('12+ years turning ideas into fast websites, online stores and custom apps. One developer handles design, code and launch, with a fixed price up front and no surprises.', 'jd-lead'),
             buttons([button('Get my fixed quote', url('/contact/'), 'jd-mag'), button('Estimate my cost', url('/estimate/'), 'is-style-ghost jd-mag')], 'is-large')), 'jd-hero__main'),
         block('jd/offer')), 'jd-hero__row')), 'jd-wrap'), 'jd-screen'), 'jd-hero', 'section'))
 

@@ -22,7 +22,7 @@
 <!-- wp:group {"className":"jd-hero__row"} -->
 <div class="wp-block-group jd-hero__row"><!-- wp:group {"className":"jd-hero__main"} -->
 <div class="wp-block-group jd-hero__main"><!-- wp:paragraph {"className":"jd-lead"} -->
-<p class="jd-lead">Front end, back end and everything in between. You get a senior full stack developer with 12+ years building WordPress, WooCommerce, Shopify and custom web apps, a written fixed price within 24 hours, daily updates in your time zone, and 30 days of free fixes after launch.</p>
+<p class="jd-lead">12+ years turning ideas into fast websites, online stores and custom apps. One developer handles design, code and launch, with a fixed price up front and no surprises.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"is-large"} -->
