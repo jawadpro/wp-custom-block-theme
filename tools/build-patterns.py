@@ -127,7 +127,7 @@ princ = [('Replies inside 24 hours', "Usually much faster. If I'm away, you know
          ('Honest scope', "If a job isn't a fit for me, I'll say so on the first call and point you elsewhere."),
          ('30 days of free fixes', 'Anything I built that breaks after launch, I fix at no charge.')]
 tools = [
-    'WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types', 'Gutenberg blocks', 'Shopify',
+    'WordPress', 'Elementor Pro', 'WooCommerce', 'ACF', 'Custom post types', 'Gutenberg blocks', 'Shopify', 'Liquid', 'Webflow',
     'PHP', 'Laravel', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Node.js', 'HTML5', 'CSS3', 'Sass', 'Tailwind CSS', 'Vite',
     'REST APIs', 'GraphQL', 'MySQL', 'Redis', 'Git', 'GitHub',
     'Docker', 'Kubernetes', 'GitHub Actions', 'CI/CD', 'Linux', 'Bash', 'Nginx', 'Apache', 'LiteSpeed', 'WP-CLI', 'cPanel',
