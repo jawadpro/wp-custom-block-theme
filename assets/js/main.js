@@ -259,7 +259,7 @@
 		} );
 	} );
 
-	/* Hero dot field ------------------------------------------------------ */
+	/* Hero flow lines ------------------------------------------------------ */
 	safe( 'field', function () {
 		var screen = $( '.jd-screen' );
 		if ( ! screen || ! cfg.field || ! cfg.motion || reduce ) {
@@ -282,22 +282,38 @@
 		}
 		function draw() {
 			ctx.clearRect( 0, 0, W, H );
-			var gap = W < 700 ? 24 : 30;
-			var tt = tick * 0.012;
-			for ( var y = gap / 2; y < H; y += gap ) {
-				for ( var x = gap / 2; x < W; x += gap ) {
-					var w = Math.sin( x * 0.006 + tt ) + Math.cos( y * 0.008 - tt * 0.8 ) + Math.sin( ( x + y ) * 0.003 + tt * 0.6 );
-					var dist = Math.hypot( x - mx, y - my );
-					var m = Math.max( 0, 1 - dist / 220 );
-					var k = Math.max( 0, ( w + 1.4 ) / 4.4 ) * ( 0.35 + 0.65 * ( x / W ) ) + m * 0.9;
-					var r = 0.6 + k * 2.1;
-					var oy = Math.sin( x * 0.01 + tt ) * 3 - m * 10 * ( y > my ? 1 : -1 );
-					ctx.fillStyle = m > 0.25 ? 'rgba(92,242,200,' + ( 0.25 + m * 0.7 ) + ')' : 'rgba(91,116,255,' + ( 0.12 + k * 0.55 ) + ')';
-					ctx.beginPath();
-					ctx.arc( x, y + oy, r, 0, 6.283 );
-					ctx.fill();
+			var n = W < 700 ? 14 : 22;
+			var tt = tick * 0.008;
+			var amp = Math.min( 90, H * 0.12 );
+			var grad = ctx.createLinearGradient( 0, 0, W, 0 );
+			grad.addColorStop( 0, 'rgba(91,116,255,0)' );
+			grad.addColorStop( 0.35, 'rgba(91,116,255,.55)' );
+			grad.addColorStop( 0.8, 'rgba(92,242,200,.85)' );
+			grad.addColorStop( 1, 'rgba(92,242,200,.4)' );
+			ctx.strokeStyle = grad;
+			for ( var i = 0; i < n; i++ ) {
+				var f = i / ( n - 1 );
+				var base = H * ( 0.08 + f * 0.62 );
+				ctx.globalAlpha = 0.18 + 0.5 * Math.sin( f * Math.PI );
+				ctx.lineWidth = i % 5 === 0 ? 1.4 : 0.8;
+				ctx.beginPath();
+				for ( var x = 0; x <= W + 8; x += 8 ) {
+					var u = x / W;
+					var y = base +
+						Math.sin( x * 0.0042 + tt + i * 0.32 ) * amp * ( 0.25 + 0.75 * u ) +
+						Math.cos( x * 0.0016 - tt * 0.7 + i * 0.18 ) * amp * 0.55;
+					var dx = x - mx, dy = y - my;
+					var m = Math.max( 0, 1 - Math.sqrt( dx * dx + dy * dy ) / 200 );
+					y += m * m * 36 * ( y > my ? 1 : -1 );
+					if ( x === 0 ) {
+						ctx.moveTo( x, y );
+					} else {
+						ctx.lineTo( x, y );
+					}
 				}
+				ctx.stroke();
 			}
+			ctx.globalAlpha = 1;
 		}
 		function loop() {
 			if ( visible && ! d.hidden ) {
