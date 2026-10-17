@@ -43,6 +43,8 @@ function jd_option_fields() {
 				'github_url'      => array( __( 'GitHub', 'jawad' ), 'url', 'https://github.com/jawadpro', '' ),
 				'x_url'           => array( __( 'X / Twitter', 'jawad' ), 'url', '', '' ),
 				'gf_form_id'      => array( __( 'Send form entries to Gravity Forms form ID', 'jawad' ), 'number', '', __( 'Optional. When set and Gravity Forms is active, the theme form submits into that form (fields matched by label: Name, Email, Website, Service, Budget, Timeline, Details), so its notifications, entries and SMTP apply.', 'jawad' ) ),
+				'turnstile_site'  => array( __( 'Cloudflare Turnstile site key', 'jawad' ), 'text', '', __( 'Optional captcha. Leave both keys empty to rely on the built-in honeypot and timing checks.', 'jawad' ) ),
+				'turnstile_secret' => array( __( 'Cloudflare Turnstile secret key', 'jawad' ), 'text', '', '' ),
 				'form_success'    => array( __( 'Form success message', 'jawad' ), 'textarea', "Thanks. I'll reply within 24 hours with next steps and a time for a quick call.", '' ),
 				'live_tz'         => array( __( 'Client time zone for live status', 'jawad' ), 'text', 'America/New_York', __( 'Any PHP time zone name.', 'jawad' ) ),
 				'live_start'      => array( __( 'Live hours start (0-23, client time)', 'jawad' ), 'number', 9, '' ),

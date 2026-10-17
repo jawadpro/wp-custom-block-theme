@@ -726,6 +726,16 @@
 			var err = $( '.jd-err', form );
 			var cur = 1;
 			form.classList.add( 'is-stepped' );
+			// Human check: the server expects this only after a real interaction with the form.
+			var human = function () {
+				if ( form.elements.jd_js && form.elements.jd_ts ) {
+					form.elements.jd_js.value = form.elements.jd_ts.value.split( '' ).reverse().join( '' );
+				}
+				form.removeEventListener( 'keydown', human );
+				form.removeEventListener( 'pointerdown', human );
+			};
+			form.addEventListener( 'keydown', human );
+			form.addEventListener( 'pointerdown', human );
 			function show( n ) {
 				cur = n;
 				steps.forEach( function ( s ) {
